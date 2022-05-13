@@ -52,8 +52,10 @@
         <button class="tablinks" onclick="openTab(event, 'GBA')">Game Boy Advance</button>
         <button class="tablinks" onclick="openTab(event, 'N64')">Nintendo 64</button>
         <button class="tablinks" onclick="openTab(event, 'PS1')">Playstation 1</button>
+        <button class="tablinks" onclick="openTab(event, 'Web')">Web</button>
     </div>
 
+    <br />
     <br />
     <br />
 
@@ -134,6 +136,13 @@
         </ul>
     </div>
 
+    <div id="Web" class="tabcontent" style="width:400px;height:600px;overflow-x:hidden;overflow-y:auto;">
+        <input type="text" id="WebSearch" onkeydown="searchweblinks()" />
+        <p class="webelements">OvO</p>
+        <p class="webelements">World's Hardest Game</p>
+        <p class="webelements">Coolmath Games</p>
+    </div>
+
     <br />
     <label for="emuselect">Choose an emulator:</label>
     <select id="emuselect" onchange="updateres()">
@@ -180,6 +189,12 @@
             } else {
                 document.getElementById('resselect').style.display = "none";
                 document.getElementById('reslabel').style.display = "none";
+            }
+        }
+        function searchweblinks() {
+            links = document.getElementsByClassName('webelements');
+            for (let i = 0; i < links.length; i++) {
+                console.log(links[i].innerHTML);
             }
         }
     </script>
