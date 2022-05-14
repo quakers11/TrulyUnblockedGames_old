@@ -45,7 +45,8 @@
 
         .webelements {
             display: block;
-            margin-top: 14px;
+            margin-left: 10px;
+            margin-top: 16px;
         }
     </style>
 </head>
@@ -142,6 +143,11 @@
     </div>
 
     <div id="Web" class="tabcontent" style="width:400px;height:600px;overflow-x:hidden;overflow-y:auto;">
+        <label for="mirror">Edit Mirror?</label>
+        <input type="checkbox" id="mirror" onchange="setLinks(0)" />
+        <br />
+        <br />
+        <label for="WebSearch">Search: </label>
         <input type="text" id="WebSearch" onkeyup="searchWebLinks()" />
         <br />
     </div>
@@ -161,24 +167,37 @@
     </select>
 
     <script>
+        document.getElementById('mirror').checked = false;
         urls = [['OvO', 'https://www.coolmathgames.com/0-ovo/play', 'https://edit.coolmath-games.com/0-ovo/play'],
             ['2048', 'https://www.coolmathgames.com/0-2048/play', 'https://edit.coolmath-games.com/0-2048/play'],
             ['Thing3', 'test', 'test']].sort();
 
         const el = document.createElement('a');
         el.className = 'webelements';
+
         for (let i = 0; i < urls.length; i++) {
             el.innerHTML = urls[i][0];
             el.href = urls[i][1];
             document.getElementById('Web').appendChild(el.cloneNode(true));
         }
+
         if (sessionStorage.type) {
             document.getElementById('emuselect').selectedIndex = sessionStorage.getItem('type');
         }
         if (sessionStorage.res) {
             document.getElementById('resselect').selectedIndex = sessionStorage.getItem('res');
         }
-        updateres()
+        updateres();
+        function setLinks(edit) {
+            for (let i = 0; i < urls.length; i++) {
+                document.getElementById('Web').children[document.getElementById('Web').children.length - 1].remove();
+            }
+            for (let i = 0; i < urls.length; i++) {
+                el.innerHTML = urls[i][0];
+                el.href = urls[i][document.getElementById('mirror').checked + 1];
+                document.getElementById('Web').appendChild(el.cloneNode(true));
+            }
+        }
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
