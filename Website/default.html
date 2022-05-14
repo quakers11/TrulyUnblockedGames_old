@@ -42,6 +42,11 @@
             padding: 6px 12px;
             border-top: none;
         }
+
+        .webelements {
+            display: block;
+            margin-top: 14px;
+        }
     </style>
 </head>
 <body>
@@ -137,10 +142,8 @@
     </div>
 
     <div id="Web" class="tabcontent" style="width:400px;height:600px;overflow-x:hidden;overflow-y:auto;">
-        <input type="text" id="WebSearch" onkeydown="searchweblinks()" />
-        <p class="webelements">OvO</p>
-        <p class="webelements">World's Hardest Game</p>
-        <p class="webelements">Coolmath Games</p>
+        <input type="text" id="WebSearch" onkeyup="searchWebLinks()" />
+        <br />
     </div>
 
     <br />
@@ -158,6 +161,17 @@
     </select>
 
     <script>
+        urls = [['OvO', 'https://www.coolmathgames.com/0-ovo/play', 'https://edit.coolmath-games.com/0-ovo/play'],
+            ['2048', 'https://www.coolmathgames.com/0-2048/play', 'https://edit.coolmath-games.com/0-2048/play'],
+            ['Thing3', 'test', 'test']].sort();
+
+        const el = document.createElement('a');
+        el.className = 'webelements';
+        for (let i = 0; i < urls.length; i++) {
+            el.innerHTML = urls[i][0];
+            el.href = urls[i][1];
+            document.getElementById('Web').appendChild(el.cloneNode(true));
+        }
         if (sessionStorage.type) {
             document.getElementById('emuselect').selectedIndex = sessionStorage.getItem('type');
         }
@@ -191,10 +205,15 @@
                 document.getElementById('reslabel').style.display = "none";
             }
         }
-        function searchweblinks() {
+        function searchWebLinks() {
             links = document.getElementsByClassName('webelements');
             for (let i = 0; i < links.length; i++) {
-                console.log(links[i].innerHTML);
+                x = links[i];
+                if (x.innerHTML.toLowerCase().includes(document.getElementById('WebSearch').value.toLowerCase())) {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
             }
         }
     </script>
