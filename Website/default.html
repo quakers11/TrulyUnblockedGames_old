@@ -221,17 +221,6 @@
                 getId('reslabel').style.display = "none";
             }
         }
-        function searchWebLinks() {
-            links = document.getElementsByClassName('webelements');
-            for (let i = 0; i < links.length; i++) {
-                x = links[i];
-                if (x.innerHTML.toLowerCase().includes(getId('WebSearch').value.toLowerCase())) {
-                    x.style.display = 'block';
-                } else {
-                    x.style.display = 'none';
-                }
-            }
-        }
     </script>
 </body>
 </html>
