@@ -45,7 +45,8 @@
 
         .webelements {
             display: block;
-            margin-top: 14px;
+            margin-left: 10px;
+            margin-top: 16px;
         }
     </style>
 </head>
@@ -56,7 +57,6 @@
         <button class="tablinks" onclick="openTab(event, 'NES')">Nintendo Entertainment System</button>
         <button class="tablinks" onclick="openTab(event, 'GBA')">Game Boy Advance</button>
         <button class="tablinks" onclick="openTab(event, 'N64')">Nintendo 64</button>
-        <button class="tablinks" onclick="openTab(event, 'PS1')">Playstation 1</button>
         <button class="tablinks" onclick="openTab(event, 'Web')">Web</button>
     </div>
 
@@ -68,18 +68,18 @@
         <h2>Nintendo Entertainment System</h2>
         <h3>Super Mario Bros.</h3>
         <ul>
-            <li><a href="game.html?ver=nes&game=smb" onclick="select()">Super Mario Bros. (World)</a></li>
-            <li><a href="game.html?ver=nes&game=smb_2" onclick="select()">Super Mario Bros. 2 (USA)</a></li>
-            <li><a href="game.html?ver=nes&game=smb_3" onclick="select()">Super Mario Bros. 3 (USA)</a></li>
-            <li><a href="game.html?ver=nes&game=smb_2_jp" onclick="select()">Super Mario Bros. 2 (JP) (The Lost Levels)</a></li>
+            <li><a href="game.html?ver=nes&game=smb" onclick="setStorage()">Super Mario Bros. (World)</a></li>
+            <li><a href="game.html?ver=nes&game=smb_2" onclick="setStorage()">Super Mario Bros. 2 (USA)</a></li>
+            <li><a href="game.html?ver=nes&game=smb_3" onclick="setStorage()">Super Mario Bros. 3 (USA)</a></li>
+            <li><a href="game.html?ver=nes&game=smb_2_jp" onclick="setStorage()">Super Mario Bros. 2 (JP) (The Lost Levels)</a></li>
         </ul>
         <h3>Romhacks</h3>
         <ul>
-            <li><a href="game.html?ver=nes&game=smb_practice" onclick="select()">Super Mario Bros. Practice (World)</a></li>
+            <li><a href="game.html?ver=nes&game=smb_practice" onclick="setStorage()">Super Mario Bros. Practice (World)</a></li>
         </ul>
         <h3>Tetris</h3>
         <ul>
-            <li><a href="game.html?ver=nes&game=tetris" onclick="select()">Tetris (USA)</a></li>
+            <li><a href="game.html?ver=nes&game=tetris" onclick="setStorage()">Tetris (USA)</a></li>
         </ul>
     </div>
 
@@ -87,19 +87,19 @@
         <h2>Game Boy Advance</h2>
         <h3>Pokémon</h3>
         <ul>
-            <li><a href="game.html?ver=gba&game=pokemon_emerald" onclick="select()">Pokémon Emerald</a></li>
-            <li><a href="game.html?ver=gba&game=pokemon_fire_red" onclick="select()">Pokémon FireRed (1636) (Squirrels) (USA)</a></li>
-            <li><a href="game.html?ver=gba&game=pokemon_ruby" onclick="select()">Pokémon Ruby</a></li>
-            <li><a href="game.html?ver=gba&game=pokemon_sapphire" onclick="select()">Pokémon Sapphire</a></li>
+            <li><a href="game.html?ver=gba&game=pokemon_emerald" onclick="setStorage()">Pokémon Emerald</a></li>
+            <li><a href="game.html?ver=gba&game=pokemon_fire_red" onclick="setStorage()">Pokémon FireRed (1636) (Squirrels) (USA)</a></li>
+            <li><a href="game.html?ver=gba&game=pokemon_ruby" onclick="setStorage()">Pokémon Ruby</a></li>
+            <li><a href="game.html?ver=gba&game=pokemon_sapphire" onclick="setStorage()">Pokémon Sapphire</a></li>
         </ul>
         <h3>Romhacks</h3>
         <ul>
-            <li><a href="game.html?ver=gba&game=pokemon_emerald_shiny" onclick="select()">Pokémon Emerald (1/50 Shiny Odds)</a></li>
-            <li><a href="game.html?ver=gba&game=pokemon_radical_red" onclick="select()">Pokémon Radical Red</a></li>
+            <li><a href="game.html?ver=gba&game=pokemon_emerald_shiny" onclick="setStorage()">Pokémon Emerald (1/50 Shiny Odds)</a></li>
+            <li><a href="game.html?ver=gba&game=pokemon_radical_red" onclick="setStorage()">Pokémon Radical Red</a></li>
         </ul>
         <h3>Castlevania</h3>
         <ul>
-            <li><a href="game.html?ver=gba&game=castlevania_aria" onclick="select()">Aria of Sorrow (USA)</a></li>
+            <li><a href="game.html?ver=gba&game=castlevania_aria" onclick="setStorage()">Aria of Sorrow (USA)</a></li>
         </ul>
     </div>
 
@@ -107,48 +107,47 @@
         <h2>Nintendo 64</h2>
         <h3>Super Mario 64</h3>
         <ul>
-            <li><a href="game.html?ver=n64&game=sm64_us" onclick="select()">Super Mario 64 (USA)</a></li>
-            <li><a href="game.html?ver=n64&game=sm64_jp" onclick="select()">Super Mario 64 (JP)</a></li>
+            <li><a href="game.html?ver=n64&game=sm64_us" onclick="setStorage()">Super Mario 64 (USA)</a></li>
+            <li><a href="game.html?ver=n64&game=sm64_jp" onclick="setStorage()">Super Mario 64 (JP)</a></li>
         </ul>
         <h3>Romhacks</h3>
         <ul>
-            <li><a href="game.html?ver=n64&game=sm64_us_vdisp" onclick="select()">Super Mario 64 (USA) (Variable Display)</a></li>
-            <li><a href="game.html?ver=n64&game=sm64_jp_vdisp" onclick="select()">Super Mario 64 (JP) (Variable Display)</a></li>
-            <li><a href="game.html?ver=n64&game=sm64_random" onclick="select()">Super Mario 64 Randomizer</a></li>
-            <li><a href="game.html?ver=n64&game=sm64_random_nonstop" onclick="select()">Super Mario 64 Randomizer Nonstop</a></li>
-            <li><a href="game.html?ver=n64&game=sm64_abc_trials" onclick="select()">Super Mario 64 The ABC Trials</a></li>
-            <li><a href="game.html?ver=n64&game=gravity" onclick="select()">Gravity Swap 64</a></li>
+            <li><a href="game.html?ver=n64&game=sm64_us_vdisp" onclick="setStorage()">Super Mario 64 (USA) (Variable Display)</a></li>
+            <li><a href="game.html?ver=n64&game=sm64_jp_vdisp" onclick="setStorage()">Super Mario 64 (JP) (Variable Display)</a></li>
+            <li><a href="game.html?ver=n64&game=sm64_random" onclick="setStorage()">Super Mario 64 Randomizer</a></li>
+            <li><a href="game.html?ver=n64&game=sm64_random_nonstop" onclick="setStorage()">Super Mario 64 Randomizer Nonstop</a></li>
+            <li><a href="game.html?ver=n64&game=sm64_abc_trials" onclick="setStorage()">Super Mario 64 The ABC Trials</a></li>
+            <li><a href="game.html?ver=n64&game=gravity" onclick="setStorage()">Gravity Swap 64</a></li>
         </ul>
         <h3>Super Smash Bros. 64</h3>
         <ul>
-            <li><a href="game.html?ver=n64&game=ssb_64" onclick="select()">Super Smash Bros. 64</a></li>
+            <li><a href="game.html?ver=n64&game=ssb_64" onclick="setStorage()">Super Smash Bros. 64</a></li>
         </ul>
         <h3>Romhacks</h3>
         <ul>
-            <li><a href="game.html?ver=n64&game=smashremix" onclick="select()">Smash Remix</a></li>
+            <li><a href="game.html?ver=n64&game=smashremix" onclick="setStorage()">Smash Remix</a></li>
         </ul>
         <h3>Donkey Kong 64</h3>
         <ul>
-            <li><a href="game.html?ver=n64&game=dk64" onclick="select()">Donkey Kong 64 (USA)</a></li>
-        </ul>
-    </div>
-
-    <div id="PS1" class="tabcontent">
-        <h2>Playstation 1</h2>
-        <h3>Castlevania</h3>
-        <ul>
-            <li><a href="game.html?ver=psx&game=castlevania" onclick="select()">Castlevania - Symphony of the Night</a></li>
+            <li><a href="game.html?ver=n64&game=dk64" onclick="setStorage()">Donkey Kong 64 (USA)</a></li>
         </ul>
     </div>
 
     <div id="Web" class="tabcontent" style="width:400px;height:600px;overflow-x:hidden;overflow-y:auto;">
-        <input type="text" id="WebSearch" onkeyup="searchWebLinks()" />
-        <br />
+        <form autocomplete="off">
+            <label for="mirror">Edit Mirror?</label>
+            <input type="checkbox" id="mirror" onchange="setLinks(0)" value="no" />
+            <br />
+            <br />
+            <label for="WebSearch">Search: </label>
+            <input type="text" id="WebSearch" onkeyup="searchWebLinks()" />
+            <br />
+        </form>
     </div>
 
     <br />
     <label for="emuselect">Choose an emulator:</label>
-    <select id="emuselect" onchange="updateres()">
+    <select id="emuselect" onchange="updateResDisplay()">
         <option>NeptunJS</option>
         <option>EmulatorJS</option>
     </select>
@@ -161,24 +160,41 @@
     </select>
 
     <script>
-        urls = [['OvO', 'https://www.coolmathgames.com/0-ovo/play', 'https://edit.coolmath-games.com/0-ovo/play'],
-            ['2048', 'https://www.coolmathgames.com/0-2048/play', 'https://edit.coolmath-games.com/0-2048/play'],
+        urls = [['OvO', 'https://www.coolmathgames.com/0-ovo/play', 'https://edit.coolmath-games.com/0-ovo/play'],// an array with the display names and links for the Web section
+            ['2048', 'https://www.coolmathgames.com/0-2048/play', 'https://edit.coolmath-games.com/0-2048/play'], // format is [[display, mirror1, mirror2], [display, mirror1, mirror2]]
             ['Thing3', 'test', 'test']].sort();
 
         const el = document.createElement('a');
         el.className = 'webelements';
+
         for (let i = 0; i < urls.length; i++) {
             el.innerHTML = urls[i][0];
-            el.href = urls[i][1];
-            document.getElementById('Web').appendChild(el.cloneNode(true));
+            el.href = urls[i][getId('mirror').checked + 1];
+            getId('Web').appendChild(el.cloneNode(true));
         }
+
         if (sessionStorage.type) {
-            document.getElementById('emuselect').selectedIndex = sessionStorage.getItem('type');
+            getId('emuselect').selectedIndex = sessionStorage.getItem('type');
         }
         if (sessionStorage.res) {
-            document.getElementById('resselect').selectedIndex = sessionStorage.getItem('res');
+            getId('resselect').selectedIndex = sessionStorage.getItem('res');
         }
-        updateres()
+        updateResDisplay();
+        searchWebLinks();
+        function getId(id) {
+            return document.getElementById(id);
+        }
+        function setLinks(edit) {
+            for (let i = 0; i < urls.length; i++) {
+                getId('Web').children[getId('Web').children.length - 1].remove();
+            }
+            for (let i = 0; i < urls.length; i++) {
+                el.innerHTML = urls[i][0];
+                el.href = urls[i][getId('mirror').checked + 1];
+                getId('Web').appendChild(el.cloneNode(true));
+            }
+            searchWebLinks();
+        }
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tabcontent");
@@ -189,27 +205,27 @@
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-            document.getElementById(tabName).style.display = "block";
+            getId(tabName).style.display = "block";
             evt.currentTarget.className += " active";
         }
-        function select() {
-            sessionStorage.setItem('type', (document.getElementById('emuselect').selectedIndex));
-            sessionStorage.setItem('res', (document.getElementById('resselect').selectedIndex));
+        function setStorage() {
+            sessionStorage.setItem('type', (getId('emuselect').selectedIndex));
+            sessionStorage.setItem('res', (getId('resselect').selectedIndex));
         }
-        function updateres() {
-            if (document.getElementById('emuselect').selectedIndex == 1) {
-                document.getElementById('resselect').style.display = "block";
-                document.getElementById('reslabel').style.display = "block";
+        function updateResDisplay() {
+            if (getId('emuselect').selectedIndex == 1) {
+                getId('resselect').style.display = "block";
+                getId('reslabel').style.display = "block";
             } else {
-                document.getElementById('resselect').style.display = "none";
-                document.getElementById('reslabel').style.display = "none";
+                getId('resselect').style.display = "none";
+                getId('reslabel').style.display = "none";
             }
         }
         function searchWebLinks() {
             links = document.getElementsByClassName('webelements');
             for (let i = 0; i < links.length; i++) {
                 x = links[i];
-                if (x.innerHTML.toLowerCase().includes(document.getElementById('WebSearch').value.toLowerCase())) {
+                if (x.innerHTML.toLowerCase().includes(getId('WebSearch').value.toLowerCase())) {
                     x.style.display = 'block';
                 } else {
                     x.style.display = 'none';
