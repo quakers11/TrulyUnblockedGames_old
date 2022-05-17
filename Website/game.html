@@ -24,9 +24,7 @@
         const res = sessionStorage.getItem('res');
         const type = sessionStorage.getItem('type');
         const base = document.getElementById('base');
-        //const script = document.createElement('script');
         if (type == 0) {
-            // document.getElementById('base').innerHTML = '<div id="emulator"></div>';
             base.id = 'emulator';
             var NepPlayer = '#emulator';
             var NepEmu = params.get('ver');
@@ -42,8 +40,6 @@
             document.body.append(njsloader);
         }
         if (type == 1) {
-            // document.getElementById('base').innerHTML = '<div style="width:' + String(res[sessionStorage.getItem('res')][0]) + 'px;height:' + String(res[sessionStorage.getItem('res')][1]) + 'px;max-width:100%;margin:auto;"><div id="emulator"></div></div>';
-            // document.getElementById('base').style = 'width:' + String(resolutions[res][0]) + 'px;height:' + String(resolutions[res][1] + 'px;max-width:100%;margin:auto;')
             if (sessionStorage.emuWidth) {
                 base.style.width = String(sessionStorage.emuWidth) + 'px';
             } else {
