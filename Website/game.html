@@ -24,7 +24,7 @@
         const res = sessionStorage.getItem('res');
         const type = sessionStorage.getItem('type');
         const base = document.getElementById('base');
-        const script = document.createElement('script');
+        //const script = document.createElement('script');
         if (type == 0) {
             // document.getElementById('base').innerHTML = '<div id="emulator"></div>';
             base.id = 'emulator';
@@ -33,12 +33,13 @@
             var NepLang = 'en';
             var gameUrl = 'ROMs/' + params.get('ver') + '/' + params.get('game') + '.zip';
 
+            const njsloader = document.createElement('script');
             if (sessionStorage.origin == 0) {
-                script.src = 'https://mem.neptunjs.com/njs/njsLoader.js';
+                njsloader.src = 'https://mem.neptunjs.com/njs/njsLoader.js';
             } else {
-                script.src = 'loaders/njsLoader.js';
+                njsloader.src = 'loaders/njsLoader.js';
             }
-            document.body.append(script);
+            document.body.append(njsloader);
         }
         if (type == 1) {
             // document.getElementById('base').innerHTML = '<div style="width:' + String(res[sessionStorage.getItem('res')][0]) + 'px;height:' + String(res[sessionStorage.getItem('res')][1]) + 'px;max-width:100%;margin:auto;"><div id="emulator"></div></div>';
@@ -65,12 +66,13 @@
             var EJS_gameUrl = 'ROMs/' + params.get('ver') + '/' + params.get('game') + '.zip';
             var EJS_core = params.get('ver');
 
+            const emuloader = document.createElement('script');
             if (sessionStorage.origin == 0) {
-                script.src = 'https://www.emulatorjs.com/loader.js';
+                emuloader.src = 'https://www.emulatorjs.com/loader.js';
             } else {
-                script.src = 'loaders/emuLoader.js';
+                emuloader.src = 'loaders/emuLoader.js';
             }
-            document.body.append(script);
+            document.body.append(emuloader);
         }
     </script>
 </body>
