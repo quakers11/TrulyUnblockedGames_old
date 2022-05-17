@@ -160,6 +160,9 @@
     </select>
 
     <script>
+
+        sessionStorage.setItem('origin', 0); // manually setting the origin to 1 will get the loaders locally if the servers are down or blocked
+
         urls = [['OvO', 'https://www.coolmathgames.com/0-ovo/play', 'https://edit.coolmath-games.com/0-ovo/play'],// an array with the display names and links for the Web section
             ['2048', 'https://www.coolmathgames.com/0-2048/play', 'https://edit.coolmath-games.com/0-2048/play'], // format is [[display, mirror1, mirror2], [display, mirror1, mirror2]]
             ['Thing3', 'test', 'test']].sort();
