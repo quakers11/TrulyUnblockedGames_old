@@ -43,8 +43,16 @@
         if (type == 1) {
             // document.getElementById('base').innerHTML = '<div style="width:' + String(res[sessionStorage.getItem('res')][0]) + 'px;height:' + String(res[sessionStorage.getItem('res')][1]) + 'px;max-width:100%;margin:auto;"><div id="emulator"></div></div>';
             // document.getElementById('base').style = 'width:' + String(resolutions[res][0]) + 'px;height:' + String(resolutions[res][1] + 'px;max-width:100%;margin:auto;')
-            base.style.width = String(resolutions[res][0]) + 'px';
-            base.style.height = String(resolutions[res][1]) + 'px';
+            if (sessionStorage.emuWidth) {
+                base.style.width = String(sessionStorage.emuWidth) + 'px';
+            } else {
+                base.style.width = String(resolutions[res][0]) + 'px';
+            }
+            if (sessionStorage.emuHeight) {
+                base.style.height = String(sessionStorage.emuHeight) + 'px';
+            } else {
+                base.style.height = String(resolutions[res][1]) + 'px';
+            }
             base.style.maxWidth = '100%';
             base.style.margin = 'auto';
             const innerDiv = document.createElement('div');

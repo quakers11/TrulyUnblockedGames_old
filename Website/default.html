@@ -161,6 +161,10 @@
 
     <script>
 
+        console.log('Advanced features:');
+        console.log('Set session storage \'origin\' to anything except 0 to load the loader script locally.');
+        console.log('Set session storage \'emuWidth\' and \'emuHeight\' to set a custom size for emulatorjs.')
+
         sessionStorage.setItem('origin', 0); // manually setting the origin to 1 will get the loaders locally if the servers are down or blocked
 
         urls = [['OvO', 'https://www.coolmathgames.com/0-ovo/play', 'https://edit.coolmath-games.com/0-ovo/play'],// an array with the display names and links for the Web section
