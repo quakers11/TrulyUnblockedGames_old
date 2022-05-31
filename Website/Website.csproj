@@ -82,8 +82,8 @@
     <Content Include="default.html" />
     <Content Include="docs\favicon.ico" />
     <Content Include="docs\Logo.png" />
-    <Content Include="webLinks.js" />
     <Content Include="index.html" />
+    <Content Include="webLinks.js" />
     <Content Include="loaders\emuLoader.js" />
     <Content Include="loaders\njsLoader.js" />
     <Content Include="ROMs\n64\sm64_jp.zip" />
@@ -97,7 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="data\cores\gb-wasm.data" />
-    <Content Include="data\cores\LICENSE" />
     <Content Include="data\cores\nds-wasm.data" />
     <Content Include="data\cores\nes-wasm.data" />
     <Content Include="data\cores\snes-wasm.data" />

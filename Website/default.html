@@ -136,7 +136,7 @@
     <div id="Web" class="tabcontent" style="width:400px;height:600px;overflow-x:hidden;overflow-y:auto;">
         <form autocomplete="off">
             <label for="mirror">Edit Mirror?</label>
-            <input type="checkbox" id="mirror" onchange="setLinks(0)" value="no" />
+            <input type="checkbox" id="mirror" onchange="setLinks(0)" />
             <br />
             <br />
             <label for="WebSearch">Search: </label>
@@ -167,6 +167,8 @@
         console.log('Set session storage \'emuWidth\' and \'emuHeight\' to set a custom size for emulatorjs.')
 
         sessionStorage.setItem('origin', 0); // manually setting the origin to 1 will get the loaders locally if the servers are down or blocked
+
+        getId('mirror').checked = true;
 
         const el = document.createElement('a');
         el.className = 'webelements';
