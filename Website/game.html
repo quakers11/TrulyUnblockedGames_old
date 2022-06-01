@@ -23,6 +23,7 @@
         const params = new URLSearchParams(window.location.search);
         const res = sessionStorage.getItem('res');
         const type = sessionStorage.getItem('type');
+        const origin = sessionStorage.getItem('origin');
         const base = document.getElementById('base');
         if (type == 0) {
             base.id = 'emulator';
@@ -32,11 +33,14 @@
             var gameUrl = 'ROMs/' + params.get('ver') + '/' + params.get('game') + '.zip';
 
             const njsloader = document.createElement('script');
-            if (sessionStorage.origin == 0) {
-                njsloader.src = 'https://mem.neptunjs.com/njs/njsLoader.js';
-            } else {
+            if (origin == 0) {
+                njsloader.src = 'NeptunJS/NJS.gge';
+            } else if (origin == 1) {
                 njsloader.src = 'loaders/njsLoader.js';
+            } else if (origin == 2) {
+                njsloader.src = 'https://mem.neptunjs.com/njs/njsLoader.js';
             }
+            debugger;
             document.body.append(njsloader);
         }
         if (type == 1) {
@@ -61,12 +65,12 @@
             }
             var EJS_gameUrl = 'ROMs/' + params.get('ver') + '/' + params.get('game') + '.zip';
             var EJS_core = params.get('ver');
-            var EJS_pathtodata = "data/";
+            var EJS_pathtodata = "EmulatorJS/";
 
             var EJS_DEBUG_XX = true;
 
             const emuloader = document.createElement('script');
-            emuloader.src = 'data/loader.js';
+            emuloader.src = 'EmulatorJS/loader.js';
             document.body.append(emuloader);
         }
     </script>
