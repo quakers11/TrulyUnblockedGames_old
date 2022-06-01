@@ -2,7 +2,7 @@
 This is a Deobfuscated version of NeptunJS/NeptuneJS/NJS - Specifically v2.5.5 as of 5th of August 2018
 
 # Try it out!
-[https://impragma.github.io/NeptunJS](https://impragma.github.io/NeptunJS)
+[NeptunJS](NeptunJS)
 
 ### Important
 This repo contains "rom.zip" and its a GBA rom copyright of Nintendo.

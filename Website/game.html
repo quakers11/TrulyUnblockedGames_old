@@ -40,8 +40,13 @@
             } else if (origin == 2) {
                 njsloader.src = 'https://mem.neptunjs.com/njs/njsLoader.js';
             }
-            debugger;
             document.body.append(njsloader);
+
+            var style = document.createElement("link");
+            style.href = "NeptunJS/neptun.css";
+            style.rel = "stylesheet";
+            style.type = "text/css";
+            document.head.appendChild(style);
         }
         if (type == 1) {
             if (sessionStorage.emuWidth) {
