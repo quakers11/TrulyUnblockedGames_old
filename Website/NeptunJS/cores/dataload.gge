@@ -2636,7 +2636,7 @@ var dir,dir2,ntype,gtype,vcvbb,smuy,wwqeas,asdww,adswq,wweqr,fomain,gfomain,as2,
   //END FROM INNER
   return 0x15cc;
 }();
-
+/*
 setInterval(function(){
   return _0x502f32();
 }, 4000);
@@ -2663,4 +2663,4 @@ function _0x502f32(_0x5997f8){
       _0x1582e9(0);
     }
   } catch(_0x55f115){}
-}
+}*/

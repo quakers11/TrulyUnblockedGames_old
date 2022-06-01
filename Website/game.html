@@ -34,6 +34,7 @@
 
             const njsloader = document.createElement('script');
             if (origin == 0) {
+                njsloader.setAttribute("data-name", "njs2");
                 njsloader.src = 'NeptunJS/NJS.gge';
             } else if (origin == 1) {
                 njsloader.src = 'loaders/njsLoader.js';
