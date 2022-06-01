@@ -26,6 +26,33 @@
         const origin = sessionStorage.getItem('origin');
         const base = document.getElementById('base');
         if (type == 0) {
+            if (sessionStorage.emuWidth) {
+                base.style.width = String(sessionStorage.emuWidth) + 'px';
+            } else {
+                base.style.width = String(resolutions[res][0]) + 'px';
+            }
+            if (sessionStorage.emuHeight) {
+                base.style.height = String(sessionStorage.emuHeight) + 'px';
+            } else {
+                base.style.height = String(resolutions[res][1]) + 'px';
+            }
+            base.style.maxWidth = '100%';
+            base.style.margin = 'auto';
+            const innerDiv = document.createElement('div');
+            innerDiv.id = 'emulator';
+            base.appendChild(innerDiv);
+            var EJS_player = '#emulator';
+            var EJS_gameUrl = 'ROMs/' + params.get('ver') + '/' + params.get('game') + '.zip';
+            var EJS_core = params.get('ver');
+            var EJS_pathtodata = "EmulatorJS/";
+
+            var EJS_DEBUG_XX = true;
+
+            const emuloader = document.createElement('script');
+            emuloader.src = 'EmulatorJS/loader.js';
+            document.body.append(emuloader);
+        }
+        if (type == 1) {
             base.id = 'emulator';
             var NepPlayer = '#emulator';
             var NepEmu = params.get('ver');
@@ -48,36 +75,6 @@
             style.rel = "stylesheet";
             style.type = "text/css";
             document.head.appendChild(style);
-        }
-        if (type == 1) {
-            if (sessionStorage.emuWidth) {
-                base.style.width = String(sessionStorage.emuWidth) + 'px';
-            } else {
-                base.style.width = String(resolutions[res][0]) + 'px';
-            }
-            if (sessionStorage.emuHeight) {
-                base.style.height = String(sessionStorage.emuHeight) + 'px';
-            } else {
-                base.style.height = String(resolutions[res][1]) + 'px';
-            }
-            base.style.maxWidth = '100%';
-            base.style.margin = 'auto';
-            const innerDiv = document.createElement('div');
-            innerDiv.id = 'emulator';
-            base.appendChild(innerDiv);
-            var EJS_player = '#emulator';
-            if (params.get('ver') == 'nes') {
-                var EJS_biosUrl = 'ROMs/nes/DISKSYS.zip';
-            }
-            var EJS_gameUrl = 'ROMs/' + params.get('ver') + '/' + params.get('game') + '.zip';
-            var EJS_core = params.get('ver');
-            var EJS_pathtodata = "EmulatorJS/";
-
-            var EJS_DEBUG_XX = true;
-
-            const emuloader = document.createElement('script');
-            emuloader.src = 'EmulatorJS/loader.js';
-            document.body.append(emuloader);
         }
     </script>
 </body>

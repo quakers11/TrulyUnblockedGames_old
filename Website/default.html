@@ -71,7 +71,6 @@
             <li><a href="game.html?ver=nes&game=smb" onclick="setStorage()">Super Mario Bros. (World)</a></li>
             <li><a href="game.html?ver=nes&game=smb_2" onclick="setStorage()">Super Mario Bros. 2 (USA)</a></li>
             <li><a href="game.html?ver=nes&game=smb_3" onclick="setStorage()">Super Mario Bros. 3 (USA)</a></li>
-            <li><a href="game.html?ver=nes&game=smb_2_jp" onclick="setStorage()">Super Mario Bros. 2 (JP) (The Lost Levels)</a></li>
         </ul>
         <h3>Romhacks</h3>
         <ul>
@@ -148,8 +147,8 @@
     <br />
     <label for="emuselect">Choose an emulator:</label>
     <select id="emuselect" onchange="updateResDisplay()">
-        <option>NeptunJS</option>
         <option>EmulatorJS</option>
+        <option>NeptunJS</option>
     </select>
     <br />
     <label for="resselect" id="reslabel">Choose a resolution:</label>
@@ -219,7 +218,7 @@
             sessionStorage.setItem('res', (getId('resselect').selectedIndex));
         }
         function updateResDisplay() {
-            if (getId('emuselect').selectedIndex == 1) {
+            if (getId('emuselect').selectedIndex == 0) {
                 getId('resselect').style.display = "block";
                 getId('reslabel').style.display = "block";
             } else {

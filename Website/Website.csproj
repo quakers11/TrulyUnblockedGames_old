@@ -299,7 +299,6 @@
     <Content Include="ROMs\nes\smb.zip" />
     <Content Include="ROMs\nes\smb_2.zip" />
     <Content Include="ROMs\nes\smb_3.zip" />
-    <Content Include="ROMs\nes\smb_2_jp.zip" />
     <Content Include="ROMs\nes\smb_practice.zip" />
     <Content Include="ROMs\nes\tetris.zip" />
     <Content Include="ROMs\gba\pokemon_emerald.zip" />
@@ -310,7 +309,6 @@
     <Content Include="ROMs\gba\pokemon_sapphire.zip" />
     <Content Include="ROMs\gba\castlevania_aria.zip" />
     <Content Include="ROMs\n64\dk64.zip" />
-    <Content Include="ROMs\nes\DISKSYS.zip" />
     <Content Include="ROMs\n64\gravity.zip" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
