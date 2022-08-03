@@ -1,242 +1,352 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title></title>
-    <style>
-        body {
-            color: rgb(220, 220, 220);
-            background-color: rgb(20, 20, 20);
-        }
+	<meta charset="utf-8" />
+	<title></title>
+	<style>
+		body {
+			color: rgb(220, 220, 220);
+			background-color: rgb(20, 20, 20);
+		}
 
-        a, .tab button {
-            color: rgb(220, 220, 220);
-        }
+		a, .tab button {
+			color: rgb(220, 220, 220);
+		}
 
-        .tab {
-            background-color: #1495ff;
-        }
+		.tab {
+			background-color: #1495ff;
+		}
 
-        .tab button {
-            background-color: inherit;
-            float: left;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            padding: 14px 16px;
-            transition: 0.3s;
-            border-radius: 12px;
-            margin-left: 8px;
-        }
+		.tab button {
+			background-color: inherit;
+			float: left;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: 0.3s;
+			border-radius: 12px;
+			margin-left: 8px;
+		}
 
-        .tab button:hover {
-            background-color: #0d6fbf;
-        }
+		.tab button:hover {
+			background-color: #0d6fbf;
+		}
 
-        .tab button.active {
-            background-color: #0b518a;
-        }
+		.tab button.active {
+			background-color: #0b518a;
+		}
 
-        .tabcontent {
-            display: none;
-            padding: 6px 12px;
-            border-top: none;
-        }
+		.tabcontent {
+			display: none;
+			padding: 6px 12px;
+			border-top: none;
+		}
 
-        .webelements {
-            display: block;
-            margin-left: 10px;
-            margin-top: 16px;
-        }
-    </style>
+		.webelements {
+			display: block;
+			margin-left: 10px;
+			margin-top: 16px;
+		}
+	</style>
 </head>
 <body>
-    <h1>Choose a console</h1>
+	<h1>Choose a console</h1>
 
-    <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'NES')">Nintendo Entertainment System</button>
-        <button class="tablinks" onclick="openTab(event, 'GBA')">Game Boy Advance</button>
-        <button class="tablinks" onclick="openTab(event, 'N64')">Nintendo 64</button>
-        <button class="tablinks" onclick="openTab(event, 'Web')">Web</button>
-    </div>
+	<div class="tab">
+		<button class="tablinks NES" onclick="updateTabs('NES'); updateOptions();">Nintendo Entertainment System</button>
+		<button class="tablinks GBA" onclick="updateTabs('GBA'); updateOptions();">Game Boy Advance</button>
+		<button class="tablinks N64" onclick="updateTabs('N64'); updateOptions();">Nintendo 64</button>
+		<button class="tablinks Web" onclick="updateTabs('Web'); updateOptions();">Web</button>
+	</div>
 
-    <br />
-    <br />
-    <br />
+	<br />
+	<br />
+	<br />
 
-    <div id="NES" class="tabcontent">
-        <h2>Nintendo Entertainment System</h2>
-        <h3>Super Mario Bros.</h3>
-        <ul>
-            <li><a href="game.html?ver=nes&game=smb" onclick="setStorage()">Super Mario Bros. (World)</a></li>
-            <li><a href="game.html?ver=nes&game=smb_2" onclick="setStorage()">Super Mario Bros. 2 (USA)</a></li>
-            <li><a href="game.html?ver=nes&game=smb_3" onclick="setStorage()">Super Mario Bros. 3 (USA)</a></li>
-        </ul>
-        <h3>Romhacks</h3>
-        <ul>
-            <li><a href="game.html?ver=nes&game=smb_practice" onclick="setStorage()">Super Mario Bros. Practice (World)</a></li>
-        </ul>
-        <h3>Tetris</h3>
-        <ul>
-            <li><a href="game.html?ver=nes&game=tetris" onclick="setStorage()">Tetris (USA)</a></li>
-        </ul>
-    </div>
+	<div id="options" style="padding: 6px 12px;">
+		<h2 id="optionstitle">Options</h2>
+		<div id="emu">
+			<label for="emuselect" id="emulabel">Choose an emulator:</label>
+			<select id="emuselect" onchange="updateOptions()">
+				<option>EmulatorJS</option> <!--0-->
+				<option>NeptunJS</option> <!--1-->
+			</select>
+		</div>
+		<div id="res">
+			<label for="resselect" id="reslabel">Choose a resolution:</label>
+			<select id="resselect" onchange="updateOptions()">
+				<option>640x480</option>
+				<option>960x720</option>
+				<option>1280x960</option>
+			</select>
+		</div>
+		<div id="mirror">
+			<label for="mirrorcheck" id="mirrorlabel">Edit Mirror?</label>
+			<input type="checkbox" id="mirrorcheck" onchange="setLinks(0)" />
+		</div>
+		<div id="search">
+			<label for="searchbox" id="searchlabel">Search: </label>
+			<input type="text" id="searchbox" onkeyup="searchWebLinks()" />
+		</div>
+	</div>
 
-    <div id="GBA" class="tabcontent">
-        <h2>Game Boy Advance</h2>
-        <h3>Pokémon</h3>
-        <ul>
-            <li><a href="game.html?ver=gba&game=pokemon_emerald" onclick="setStorage()">Pokémon Emerald</a></li>
-            <li><a href="game.html?ver=gba&game=pokemon_fire_red" onclick="setStorage()">Pokémon FireRed (1636) (Squirrels) (USA)</a></li>
-            <li><a href="game.html?ver=gba&game=pokemon_ruby" onclick="setStorage()">Pokémon Ruby</a></li>
-            <li><a href="game.html?ver=gba&game=pokemon_sapphire" onclick="setStorage()">Pokémon Sapphire</a></li>
-        </ul>
-        <h3>Romhacks</h3>
-        <ul>
-            <li><a href="game.html?ver=gba&game=pokemon_emerald_shiny" onclick="setStorage()">Pokémon Emerald (1/50 Shiny Odds)</a></li>
-            <li><a href="game.html?ver=gba&game=pokemon_radical_red" onclick="setStorage()">Pokémon Radical Red</a></li>
-        </ul>
-        <h3>Castlevania</h3>
-        <ul>
-            <li><a href="game.html?ver=gba&game=castlevania_aria" onclick="setStorage()">Aria of Sorrow (USA)</a></li>
-        </ul>
-    </div>
+	<div id="NES" class="tabcontent">
+		<h2>Nintendo Entertainment System</h2>
+		<h3>Super Mario Bros.</h3>
+		<ul>
+			<li><a href="game.html?ver=nes&game=smb" onclick="setStorage()">Super Mario Bros. (World)</a></li>
+			<li><a href="game.html?ver=nes&game=smb_2" onclick="setStorage()">Super Mario Bros. 2 (USA)</a></li>
+			<li><a href="game.html?ver=nes&game=smb_3" onclick="setStorage()">Super Mario Bros. 3 (USA)</a></li>
+		</ul>
+		<h3>Romhacks</h3>
+		<ul>
+			<li><a href="game.html?ver=nes&game=smb_practice" onclick="setStorage()">Super Mario Bros. Practice (World)</a></li>
+		</ul>
+		<h3>Tetris</h3>
+		<ul>
+			<li><a href="game.html?ver=nes&game=tetris" onclick="setStorage()">Tetris (USA)</a></li>
+		</ul>
+	</div>
 
-    <div id="N64" class="tabcontent">
-        <h2>Nintendo 64</h2>
-        <h3>Super Mario 64</h3>
-        <ul>
-            <li><a href="game.html?ver=n64&game=sm64_us" onclick="setStorage()">Super Mario 64 (USA)</a></li>
-            <li><a href="game.html?ver=n64&game=sm64_jp" onclick="setStorage()">Super Mario 64 (JP)</a></li>
-        </ul>
-        <h3>Romhacks</h3>
-        <ul>
-            <li><a href="game.html?ver=n64&game=sm64_us_vdisp" onclick="setStorage()">Super Mario 64 (USA) (Variable Display)</a></li>
-            <li><a href="game.html?ver=n64&game=sm64_jp_vdisp" onclick="setStorage()">Super Mario 64 (JP) (Variable Display)</a></li>
-            <li><a href="game.html?ver=n64&game=sm64_random" onclick="setStorage()">Super Mario 64 Randomizer</a></li>
-            <li><a href="game.html?ver=n64&game=sm64_random_nonstop" onclick="setStorage()">Super Mario 64 Randomizer Nonstop</a></li>
-            <li><a href="game.html?ver=n64&game=sm64_abc_trials" onclick="setStorage()">Super Mario 64 The ABC Trials</a></li>
-            <li><a href="game.html?ver=n64&game=gravity" onclick="setStorage()">Gravity Swap 64</a></li>
-        </ul>
-        <h3>Super Smash Bros. 64</h3>
-        <ul>
-            <li><a href="game.html?ver=n64&game=ssb_64" onclick="setStorage()">Super Smash Bros. 64</a></li>
-        </ul>
-        <h3>Romhacks</h3>
-        <ul>
-            <li><a href="game.html?ver=n64&game=smashremix" onclick="setStorage()">Smash Remix</a></li>
-        </ul>
-        <h3>Donkey Kong 64</h3>
-        <ul>
-            <li><a href="game.html?ver=n64&game=dk64" onclick="setStorage()">Donkey Kong 64 (USA)</a></li>
-        </ul>
-    </div>
+	<div id="GBA" class="tabcontent">
+		<h2>Game Boy Advance</h2>
+		<h3>Pokémon</h3>
+		<ul>
+			<li><a href="game.html?ver=gba&game=pokemon_emerald" onclick="setStorage()">Pokémon Emerald</a></li>
+			<li><a href="game.html?ver=gba&game=pokemon_fire_red" onclick="setStorage()">Pokémon FireRed (1636) (Squirrels) (USA)</a></li>
+			<li><a href="game.html?ver=gba&game=pokemon_ruby" onclick="setStorage()">Pokémon Ruby</a></li>
+			<li><a href="game.html?ver=gba&game=pokemon_sapphire" onclick="setStorage()">Pokémon Sapphire</a></li>
+		</ul>
+		<h3>Romhacks</h3>
+		<ul>
+			<li><a href="game.html?ver=gba&game=pokemon_emerald_shiny" onclick="setStorage()">Pokémon Emerald (1/50 Shiny Odds)</a></li>
+			<li><a href="game.html?ver=gba&game=pokemon_radical_red" onclick="setStorage()">Pokémon Radical Red</a></li>
+		</ul>
+		<h3>Castlevania</h3>
+		<ul>
+			<li><a href="game.html?ver=gba&game=castlevania_aria" onclick="setStorage()">Aria of Sorrow (USA)</a></li>
+		</ul>
+	</div>
 
-    <div id="Web" class="tabcontent" style="width:400px;height:600px;overflow-x:hidden;overflow-y:auto;">
-        <form autocomplete="off">
-            <label for="mirror">Edit Mirror?</label>
-            <input type="checkbox" id="mirror" onchange="setLinks(0)" />
-            <br />
-            <br />
-            <label for="WebSearch">Search: </label>
-            <input type="text" id="WebSearch" onkeyup="searchWebLinks()" />
-            <br />
-        </form>
-    </div>
+	<div id="N64" class="tabcontent">
+		<h2>Nintendo 64</h2>
+		<h3>Super Mario 64</h3>
+		<ul>
+			<li><a href="game.html?ver=n64&game=sm64_us" onclick="setStorage()">Super Mario 64 (USA)</a></li>
+			<li><a href="game.html?ver=n64&game=sm64_jp" onclick="setStorage()">Super Mario 64 (JP)</a></li>
+		</ul>
+		<h3>Romhacks</h3>
+		<ul>
+			<li><a href="game.html?ver=n64&game=sm64_us_vdisp" onclick="setStorage()">Super Mario 64 (USA) (Variable Display)</a></li>
+			<li><a href="game.html?ver=n64&game=sm64_jp_vdisp" onclick="setStorage()">Super Mario 64 (JP) (Variable Display)</a></li>
+			<li><a href="game.html?ver=n64&game=sm64_random" onclick="setStorage()">Super Mario 64 Randomizer</a></li>
+			<li><a href="game.html?ver=n64&game=sm64_random_nonstop" onclick="setStorage()">Super Mario 64 Randomizer Nonstop</a></li>
+			<li><a href="game.html?ver=n64&game=sm64_abc_trials" onclick="setStorage()">Super Mario 64 The ABC Trials</a></li>
+			<li><a href="game.html?ver=n64&game=gravity" onclick="setStorage()">Gravity Swap 64</a></li>
+		</ul>
+		<h3>Super Smash Bros. 64</h3>
+		<ul>
+			<li><a href="game.html?ver=n64&game=ssb_64" onclick="setStorage()">Super Smash Bros. 64</a></li>
+		</ul>
+		<h3>Romhacks</h3>
+		<ul>
+			<li><a href="game.html?ver=n64&game=smashremix" onclick="setStorage()">Smash Remix</a></li>
+		</ul>
+		<h3>Donkey Kong 64</h3>
+		<ul>
+			<li><a href="game.html?ver=n64&game=dk64" onclick="setStorage()">Donkey Kong 64 (USA)</a></li>
+		</ul>
+	</div>
 
-    <br />
-    <label for="emuselect">Choose an emulator:</label>
-    <select id="emuselect" onchange="updateResDisplay()">
-        <option>EmulatorJS</option>
-        <option>NeptunJS</option>
-    </select>
-    <br />
-    <label for="resselect" id="reslabel">Choose a resolution:</label>
-    <select id="resselect">
-        <option>640x480</option>
-        <option>960x720</option>
-        <option>1280x960</option>
-    </select>
+	<div id="Web" class="tabcontent">
+	</div>
 
-    <script src="webLinks.js"></script>
+	<script src="webLinks.js"></script>
+	<!--
+	<script>
+		console.log('Advanced features:');
+		console.log('Set session storage \'origin\' to 0 to run the emulator hosted on this domain, 1 to run the loader script hosted on this domain, and 2 to run the loader script hosted elsewhere.');
+		console.log('Set session storage \'emuWidth\' and \'emuHeight\' to set a custom size for EmulatorJS.')
 
-    <script>
-        console.log('Advanced features:');
-        console.log('Set session storage \'origin\' to 0 to run the emulator hosted on this domain, 1 to run the loader script hosted on this domain, and 2 to run the loader script hosted elsewhere.');
-        console.log('Set session storage \'emuWidth\' and \'emuHeight\' to set a custom size for EmulatorJS.')
+		sessionStorage.setItem('origin', 0);
 
-        sessionStorage.setItem('origin', 0); // manually setting the origin to 1 will get the loaders locally if the servers are down or blocked
+		getId('mirror').checked = true;
 
-        getId('mirror').checked = true;
+		const el = document.createElement('a');
+		el.className = 'webelements';
 
-        const el = document.createElement('a');
-        el.className = 'webelements';
+		for (let i = 0; i < urls.length; i++) {
+			el.innerHTML = urls[i][0];
+			el.href = urls[i][getId('mirror').checked + 1];
+			getId('Web').appendChild(el.cloneNode(true));
+		}
 
-        for (let i = 0; i < urls.length; i++) {
-            el.innerHTML = urls[i][0];
-            el.href = urls[i][getId('mirror').checked + 1];
-            getId('Web').appendChild(el.cloneNode(true));
-        }
+		if (sessionStorage.type) {
+			getId('emuselect').selectedIndex = sessionStorage.getItem('type');
+		}
+		if (sessionStorage.res) {
+			getId('resselect').selectedIndex = sessionStorage.getItem('res');
+		}
+		updateResDisplay();
+		searchWebLinks();
+		function getId(id) {
+			return document.getElementById(id);
+		}
+		function setLinks(edit) {
+			for (let i = 0; i < urls.length; i++) {
+				getId('Web').children[getId('Web').children.length - 1].remove();
+			}
+			for (let i = 0; i < urls.length; i++) {
+				el.innerHTML = urls[i][0];
+				el.href = urls[i][getId('mirror').checked + 1];
+				getId('Web').appendChild(el.cloneNode(true));
+			}
+			searchWebLinks();
+		}
+		function openTab(evt, tabName) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			getId(tabName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+		function setStorage() {
+			sessionStorage.setItem('type', (getId('emuselect').selectedIndex));
+			sessionStorage.setItem('res', (getId('resselect').selectedIndex));
+		}
+		function updateResDisplay() {
+			if (getId('emuselect').selectedIndex == 0) {
+				getId('resselect').style.display = "block";
+				getId('reslabel').style.display = "block";
+			} else {
+				getId('resselect').style.display = "none";
+				getId('reslabel').style.display = "none";
+			}
+		}
+		function searchWebLinks() {
+			links = document.getElementsByClassName('webelements');
+			for (let i = 0; i < links.length; i++) {
+				x = links[i];
+				if (x.innerHTML.toLowerCase().includes(getId('WebSearch').value.toLowerCase())) {
+					x.style.display = 'block';
+				} else {
+					x.style.display = 'none';
+				}
+			}
+		}
+	</script>-->
 
-        if (sessionStorage.type) {
-            getId('emuselect').selectedIndex = sessionStorage.getItem('type');
-        }
-        if (sessionStorage.res) {
-            getId('resselect').selectedIndex = sessionStorage.getItem('res');
-        }
-        updateResDisplay();
-        searchWebLinks();
-        function getId(id) {
-            return document.getElementById(id);
-        }
-        function setLinks(edit) {
-            for (let i = 0; i < urls.length; i++) {
-                getId('Web').children[getId('Web').children.length - 1].remove();
-            }
-            for (let i = 0; i < urls.length; i++) {
-                el.innerHTML = urls[i][0];
-                el.href = urls[i][getId('mirror').checked + 1];
-                getId('Web').appendChild(el.cloneNode(true));
-            }
-            searchWebLinks();
-        }
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            getId(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-        function setStorage() {
-            sessionStorage.setItem('type', (getId('emuselect').selectedIndex));
-            sessionStorage.setItem('res', (getId('resselect').selectedIndex));
-        }
-        function updateResDisplay() {
-            if (getId('emuselect').selectedIndex == 0) {
-                getId('resselect').style.display = "block";
-                getId('reslabel').style.display = "block";
-            } else {
-                getId('resselect').style.display = "none";
-                getId('reslabel').style.display = "none";
-            }
-        }
-        function searchWebLinks() {
-            links = document.getElementsByClassName('webelements');
-            for (let i = 0; i < links.length; i++) {
-                x = links[i];
-                if (x.innerHTML.toLowerCase().includes(getId('WebSearch').value.toLowerCase())) {
-                    x.style.display = 'block';
-                } else {
-                    x.style.display = 'none';
-                }
-            }
-        }
-    </script>
+	<script>
+		// page loading stuff
+		console.log('Advanced features:');
+		console.log('Set session storage \'origin\' to 0 to run the emulator hosted on this domain, 1 to run the loader script hosted on this domain, and 2 to run the loader script hosted elsewhere.');
+		console.log('Set session storage \'emuWidth\' and \'emuHeight\' to set a custom size for EmulatorJS.');
+
+		svars = getSessionStorage();
+
+		updateTabs(svars.openTab);
+
+		getId('emuselect').selectedIndex = svars.o_emu;
+		getId('resselect').selectedIndex = svars.o_res;
+
+		updateOptions();
+
+		// essential functions
+		function getId(id) {
+			return document.getElementById(id);
+		}
+
+		function getClass(className) {
+			return document.getElementsByClassName(className);
+		}
+
+		// major functions
+		function getSessionStorage() { // gets variables from session storage and puts them in the svars object. If they don't exist, they are set to the default value
+			svars = {};
+			if (sessionStorage.openTab) { // keeps track of the open tab, auto sets the open tab to NES if no session storage
+				svars.openTab = sessionStorage.openTab; // should add saftey to make sure the value is good
+			} else {
+				svars.openTab = 'NES';
+			}
+
+			if (sessionStorage.o_emu) {
+				svars.o_emu = sessionStorage.o_emu;
+			} else {
+				svars.o_emu = 0;
+			}
+
+			if (sessionStorage.o_res) {
+				svars.o_res = sessionStorage.o_res;
+			} else {
+				svars.o_res = 1;
+			}
+
+			if (sessionStorage.o_mirror) {
+				svars.o_mirror = sessionStorage.o_mirror;
+			} else {
+				svars.o_mirror = true;
+			}
+
+			return svars;
+		}
+
+		function updateTabs(tab) { // updates the tabs and buttons
+			sessionStorage.openTab = tab;
+			svars.openTab = tab;
+			var i, tabcontent, tablinks;
+			tabcontent = getClass('tabcontent');
+			for (i = 0; i < tabcontent.length; i++) { // hides all tabes
+				tabcontent[i].style.display = 'none';
+			}
+			getId(tab).style.display = 'block'; // shows the correct tab
+			tablinks = getClass('tablinks');
+			for (i = 0; i < tablinks.length; i++) { // clears the active class from all tabs and adds the active class to the correct tab
+				tablinks[i].className = tablinks[i].className.replace(' active', '');
+				if (tablinks[i].className.includes(tab)) {
+					tablinks[i].className += ' active';
+				}
+			}
+		}
+
+		function updateOptions() {
+			emu = getId('emu');
+			res = getId('res');
+			mirror = getId('mirror');
+			search = getId('search');
+
+			switch (svars.openTab) {
+				case 'Web':
+					emu.style.display = "none";
+					res.style.display = "none";
+
+					mirror.style.display = "block";
+					search.style.display = "block";
+					break;
+				default:
+					emu.style.display = "block";
+					res.style.display = "block";
+
+					mirror.style.display = "none";
+					search.style.display = "none";
+
+					switch (emu.children[1].selectedIndex) {
+						case 0:
+							res.style.display = "block";
+							break;
+						default:
+							res.style.display = "none";
+							break;
+					}
+					break;
+			}
+		}
+	</script>
 </body>
 </html>
