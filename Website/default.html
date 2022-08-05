@@ -87,7 +87,7 @@
 		</div>
 		<div id="search">
 			<label for="searchbox" id="searchlabel">Search: </label>
-			<input type="text" id="searchbox" />
+			<input type="text" id="searchbox" onkeyup="updateLinks()" />
 		</div>
 	</div>
 
@@ -163,85 +163,6 @@
 	</div>
 
 	<script src="webLinks.js"></script>
-	<!--
-	<script>
-		console.log('Advanced features:');
-		console.log('Set session storage \'origin\' to 0 to run the emulator hosted on this domain, 1 to run the loader script hosted on this domain, and 2 to run the loader script hosted elsewhere.');
-		console.log('Set session storage \'emuWidth\' and \'emuHeight\' to set a custom size for EmulatorJS.')
-
-		sessionStorage.setItem('origin', 0);
-
-		getId('mirror').checked = true;
-
-		const el = document.createElement('a');
-		el.className = 'webelements';
-
-		for (let i = 0; i < urls.length; i++) {
-			el.innerHTML = urls[i][0];
-			el.href = urls[i][getId('mirror').checked + 1];
-			getId('Web').appendChild(el.cloneNode(true));
-		}
-
-		if (sessionStorage.type) {
-			getId('emuselect').selectedIndex = sessionStorage.getItem('type');
-		}
-		if (sessionStorage.res) {
-			getId('resselect').selectedIndex = sessionStorage.getItem('res');
-		}
-		updateResDisplay();
-		searchWebLinks();
-		function getId(id) {
-			return document.getElementById(id);
-		}
-		function setLinks(edit) {
-			for (let i = 0; i < urls.length; i++) {
-				getId('Web').children[getId('Web').children.length - 1].remove();
-			}
-			for (let i = 0; i < urls.length; i++) {
-				el.innerHTML = urls[i][0];
-				el.href = urls[i][getId('mirror').checked + 1];
-				getId('Web').appendChild(el.cloneNode(true));
-			}
-			searchWebLinks();
-		}
-		function openTab(evt, tabName) {
-			var i, tabcontent, tablinks;
-			tabcontent = document.getElementsByClassName("tabcontent");
-			for (i = 0; i < tabcontent.length; i++) {
-				tabcontent[i].style.display = "none";
-			}
-			tablinks = document.getElementsByClassName("tablinks");
-			for (i = 0; i < tablinks.length; i++) {
-				tablinks[i].className = tablinks[i].className.replace(" active", "");
-			}
-			getId(tabName).style.display = "block";
-			evt.currentTarget.className += " active";
-		}
-		function setStorage() {
-			sessionStorage.setItem('type', (getId('emuselect').selectedIndex));
-			sessionStorage.setItem('res', (getId('resselect').selectedIndex));
-		}
-		function updateResDisplay() {
-			if (getId('emuselect').selectedIndex == 0) {
-				getId('resselect').style.display = "block";
-				getId('reslabel').style.display = "block";
-			} else {
-				getId('resselect').style.display = "none";
-				getId('reslabel').style.display = "none";
-			}
-		}
-		function searchWebLinks() {
-			links = document.getElementsByClassName('webelements');
-			for (let i = 0; i < links.length; i++) {
-				x = links[i];
-				if (x.innerHTML.toLowerCase().includes(getId('WebSearch').value.toLowerCase())) {
-					x.style.display = 'block';
-				} else {
-					x.style.display = 'none';
-				}
-			}
-		}
-	</script>-->
 
 	<script>
 		// page loading stuff
@@ -257,6 +178,8 @@
 		getId('resselect').selectedIndex = svars.o_res;
 
 		updateOptions();
+
+		updateLinks();
 
 		// essential functions
 		function getId(id) {
@@ -344,6 +267,22 @@
 							break;
 					}
 					break;
+			}
+		}
+
+		function updateLinks() {
+			main = getId('Web');
+			while (main.firstChild) { // clear all children
+				main.removeChild(main.firstChild);
+			}
+			for (let i = 0; i < urls.length; i++) {
+				if (urls[i][0].toLowerCase().includes(getId("searchbox").value.toLowerCase())) {
+					el = document.createElement('a');
+					el.textContent = urls[i][0]
+					el.className = 'webelements';
+					el.href = urls[i][getId('mirrorcheck').checked + 1];
+					getId('Web').appendChild(el.cloneNode(true));
+				}
 			}
 		}
 	</script>
