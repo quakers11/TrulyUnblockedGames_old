@@ -21,11 +21,11 @@
 	<script>
 		const resolutions = [[640, 480], [960, 720], [1280, 960]];
 		const params = new URLSearchParams(window.location.search);
-		const res = sessionStorage.getItem('res');
-		const type = sessionStorage.getItem('type');
+		const res = sessionStorage.getItem('o_res');
+		const emu = sessionStorage.getItem('o_emu');
 		const origin = sessionStorage.getItem('origin');
 		const base = document.getElementById('base');
-		if (type == 0) {
+		if (emu == 0) {
 			if (sessionStorage.emuWidth) {
 				base.style.width = String(sessionStorage.emuWidth) + 'px';
 			} else {
@@ -52,7 +52,7 @@
 			emuloader.src = 'EmulatorJS/loader.js';
 			document.body.append(emuloader);
 		}
-		if (type == 1) {
+		if (emu == 1) {
 			base.id = 'emulator';
 			var NepPlayer = '#emulator';
 			var NepEmu = params.get('ver');

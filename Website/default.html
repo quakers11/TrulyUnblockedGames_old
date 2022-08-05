@@ -83,11 +83,11 @@
 		</div>
 		<div id="mirror">
 			<label for="mirrorcheck" id="mirrorlabel">Edit Mirror?</label>
-			<input type="checkbox" id="mirrorcheck" onchange="setLinks(0)" />
+			<input type="checkbox" id="mirrorcheck" onchange="updateOptions()" checked />
 		</div>
 		<div id="search">
 			<label for="searchbox" id="searchlabel">Search: </label>
-			<input type="text" id="searchbox" onkeyup="searchWebLinks()" />
+			<input type="text" id="searchbox" />
 		</div>
 	</div>
 
@@ -95,17 +95,17 @@
 		<h2>Nintendo Entertainment System</h2>
 		<h3>Super Mario Bros.</h3>
 		<ul>
-			<li><a href="game.html?ver=nes&game=smb" onclick="setStorage()">Super Mario Bros. (World)</a></li>
-			<li><a href="game.html?ver=nes&game=smb_2" onclick="setStorage()">Super Mario Bros. 2 (USA)</a></li>
-			<li><a href="game.html?ver=nes&game=smb_3" onclick="setStorage()">Super Mario Bros. 3 (USA)</a></li>
+			<li><a href="game.html?ver=nes&game=smb">Super Mario Bros. (World)</a></li>
+			<li><a href="game.html?ver=nes&game=smb_2">Super Mario Bros. 2 (USA)</a></li>
+			<li><a href="game.html?ver=nes&game=smb_3">Super Mario Bros. 3 (USA)</a></li>
 		</ul>
 		<h3>Romhacks</h3>
 		<ul>
-			<li><a href="game.html?ver=nes&game=smb_practice" onclick="setStorage()">Super Mario Bros. Practice (World)</a></li>
+			<li><a href="game.html?ver=nes&game=smb_practice">Super Mario Bros. Practice (World)</a></li>
 		</ul>
 		<h3>Tetris</h3>
 		<ul>
-			<li><a href="game.html?ver=nes&game=tetris" onclick="setStorage()">Tetris (USA)</a></li>
+			<li><a href="game.html?ver=nes&game=tetris">Tetris (USA)</a></li>
 		</ul>
 	</div>
 
@@ -113,19 +113,19 @@
 		<h2>Game Boy Advance</h2>
 		<h3>Pokémon</h3>
 		<ul>
-			<li><a href="game.html?ver=gba&game=pokemon_emerald" onclick="setStorage()">Pokémon Emerald</a></li>
-			<li><a href="game.html?ver=gba&game=pokemon_fire_red" onclick="setStorage()">Pokémon FireRed (1636) (Squirrels) (USA)</a></li>
-			<li><a href="game.html?ver=gba&game=pokemon_ruby" onclick="setStorage()">Pokémon Ruby</a></li>
-			<li><a href="game.html?ver=gba&game=pokemon_sapphire" onclick="setStorage()">Pokémon Sapphire</a></li>
+			<li><a href="game.html?ver=gba&game=pokemon_emerald">Pokémon Emerald</a></li>
+			<li><a href="game.html?ver=gba&game=pokemon_fire_red">Pokémon FireRed (1636) (Squirrels) (USA)</a></li>
+			<li><a href="game.html?ver=gba&game=pokemon_ruby">Pokémon Ruby</a></li>
+			<li><a href="game.html?ver=gba&game=pokemon_sapphire">Pokémon Sapphire</a></li>
 		</ul>
 		<h3>Romhacks</h3>
 		<ul>
-			<li><a href="game.html?ver=gba&game=pokemon_emerald_shiny" onclick="setStorage()">Pokémon Emerald (1/50 Shiny Odds)</a></li>
-			<li><a href="game.html?ver=gba&game=pokemon_radical_red" onclick="setStorage()">Pokémon Radical Red</a></li>
+			<li><a href="game.html?ver=gba&game=pokemon_emerald_shiny">Pokémon Emerald (1/50 Shiny Odds)</a></li>
+			<li><a href="game.html?ver=gba&game=pokemon_radical_red">Pokémon Radical Red</a></li>
 		</ul>
 		<h3>Castlevania</h3>
 		<ul>
-			<li><a href="game.html?ver=gba&game=castlevania_aria" onclick="setStorage()">Aria of Sorrow (USA)</a></li>
+			<li><a href="game.html?ver=gba&game=castlevania_aria">Aria of Sorrow (USA)</a></li>
 		</ul>
 	</div>
 
@@ -133,29 +133,29 @@
 		<h2>Nintendo 64</h2>
 		<h3>Super Mario 64</h3>
 		<ul>
-			<li><a href="game.html?ver=n64&game=sm64_us" onclick="setStorage()">Super Mario 64 (USA)</a></li>
-			<li><a href="game.html?ver=n64&game=sm64_jp" onclick="setStorage()">Super Mario 64 (JP)</a></li>
+			<li><a href="game.html?ver=n64&game=sm64_us">Super Mario 64 (USA)</a></li>
+			<li><a href="game.html?ver=n64&game=sm64_jp">Super Mario 64 (JP)</a></li>
 		</ul>
 		<h3>Romhacks</h3>
 		<ul>
-			<li><a href="game.html?ver=n64&game=sm64_us_vdisp" onclick="setStorage()">Super Mario 64 (USA) (Variable Display)</a></li>
-			<li><a href="game.html?ver=n64&game=sm64_jp_vdisp" onclick="setStorage()">Super Mario 64 (JP) (Variable Display)</a></li>
-			<li><a href="game.html?ver=n64&game=sm64_random" onclick="setStorage()">Super Mario 64 Randomizer</a></li>
-			<li><a href="game.html?ver=n64&game=sm64_random_nonstop" onclick="setStorage()">Super Mario 64 Randomizer Nonstop</a></li>
-			<li><a href="game.html?ver=n64&game=sm64_abc_trials" onclick="setStorage()">Super Mario 64 The ABC Trials</a></li>
-			<li><a href="game.html?ver=n64&game=gravity" onclick="setStorage()">Gravity Swap 64</a></li>
+			<li><a href="game.html?ver=n64&game=sm64_us_vdisp">Super Mario 64 (USA) (Variable Display)</a></li>
+			<li><a href="game.html?ver=n64&game=sm64_jp_vdisp">Super Mario 64 (JP) (Variable Display)</a></li>
+			<li><a href="game.html?ver=n64&game=sm64_random">Super Mario 64 Randomizer</a></li>
+			<li><a href="game.html?ver=n64&game=sm64_random_nonstop">Super Mario 64 Randomizer Nonstop</a></li>
+			<li><a href="game.html?ver=n64&game=sm64_abc_trials">Super Mario 64 The ABC Trials</a></li>
+			<li><a href="game.html?ver=n64&game=gravity">Gravity Swap 64</a></li>
 		</ul>
 		<h3>Super Smash Bros. 64</h3>
 		<ul>
-			<li><a href="game.html?ver=n64&game=ssb_64" onclick="setStorage()">Super Smash Bros. 64</a></li>
+			<li><a href="game.html?ver=n64&game=ssb_64">Super Smash Bros. 64</a></li>
 		</ul>
 		<h3>Romhacks</h3>
 		<ul>
-			<li><a href="game.html?ver=n64&game=smashremix" onclick="setStorage()">Smash Remix</a></li>
+			<li><a href="game.html?ver=n64&game=smashremix">Smash Remix</a></li>
 		</ul>
 		<h3>Donkey Kong 64</h3>
 		<ul>
-			<li><a href="game.html?ver=n64&game=dk64" onclick="setStorage()">Donkey Kong 64 (USA)</a></li>
+			<li><a href="game.html?ver=n64&game=dk64">Donkey Kong 64 (USA)</a></li>
 		</ul>
 	</div>
 
@@ -288,12 +288,6 @@
 				svars.o_res = 1;
 			}
 
-			if (sessionStorage.o_mirror) {
-				svars.o_mirror = sessionStorage.o_mirror;
-			} else {
-				svars.o_mirror = true;
-			}
-
 			return svars;
 		}
 
@@ -320,6 +314,11 @@
 			res = getId('res');
 			mirror = getId('mirror');
 			search = getId('search');
+
+			svars.o_emu = emu.children[1].selectedIndex;
+			sessionStorage.o_emu = emu.children[1].selectedIndex;
+			svars.o_res = res.children[1].selectedIndex;
+			sessionStorage.o_res = res.children[1].selectedIndex;
 
 			switch (svars.openTab) {
 				case 'Web':
