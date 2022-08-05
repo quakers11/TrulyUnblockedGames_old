@@ -60,14 +60,9 @@
 			var gameUrl = 'ROMs/' + params.get('ver') + '/' + params.get('game') + '.zip';
 
 			const njsloader = document.createElement('script');
-			if (origin == 0) {
-				njsloader.setAttribute("data-name", "njs2");
-				njsloader.src = 'NeptunJS/NJS.gge';
-			} else if (origin == 1) {
-				njsloader.src = 'loaders/njsLoader.js';
-			} else if (origin == 2) {
-				njsloader.src = 'https://mem.neptunjs.com/njs/njsLoader.js';
-			}
+
+			njsloader.src = 'loaders/njsLoader.js';
+			//njsloader.src = 'https://mem.neptunjs.com/njs/njsLoader.js'; // additional launcher
 			document.body.append(njsloader);
 
 			var style = document.createElement("link");
