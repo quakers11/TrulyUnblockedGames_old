@@ -44,12 +44,17 @@
 			var EJS_player = '#emulator';
 			var EJS_gameUrl = 'ROMs/' + params.get('ver') + '/' + params.get('game') + '.zip';
 			var EJS_core = params.get('ver');
-			var EJS_pathtodata = "EmulatorJS/";
-
 			var EJS_DEBUG_XX = true;
-
 			const emuloader = document.createElement('script');
-			emuloader.src = 'EmulatorJS/loader.js';
+
+			if (origin == 0) {
+				var EJS_pathtodata = "EmulatorJS/";
+				emuloader.src = 'EmulatorJS/loader.js';
+			} else {
+				var EJS_pathtodata = "https://rawcdn.githack.com/ethanaobrien/emulatorjs/main/data/";
+				emuloader.src = "https://rawcdn.githack.com/ethanaobrien/emulatorjs/main/data/loader.js";
+			}
+
 			document.body.append(emuloader);
 		}
 		if (emu == 1) {
