@@ -118,7 +118,6 @@
     <Content Include="NeptunJS\index.html" />
     <Content Include="NeptunJS\neptun.css" />
     <Content Include="webLinks.js" />
-    <Content Include="loaders\emuLoader.js" />
     <Content Include="loaders\njsLoader.js" />
     <Content Include="ROMs\n64\sm64_jp.zip" />
     <Content Include="ROMs\n64\sm64_us.zip" />
