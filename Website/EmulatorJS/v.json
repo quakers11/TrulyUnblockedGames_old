@@ -1,6 +1,6 @@
 {
     "nes": {
-        "version":"20",
+        "version":"24",
         "netplay": 1,
         "old": {"wasm":1, "asmjs":1 },
         "state": 1,
@@ -10,7 +10,7 @@
         "oldCores": 1
     },
     "snes": {
-        "version":"17",
+        "version":"21",
         "netplay": 1,
         "old": {"wasm":1, "asmjs":1 },
         "state": 1,
@@ -96,7 +96,9 @@
         "netplay": 0,
         "state": 1,
         "asmjs": 1,
-        "wasm": 1
+        "wasm": 1,
+        "newCores": 0,
+        "oldCores": 1
     },
     "msx": {
         "version":"1",
@@ -117,7 +119,7 @@
         "oldCores": 1
     },
     "vb": {
-        "version":"3",
+        "version":"7",
         "netplay": 0,
         "old": {"wasm":1, "asmjs":1 },
         "state": 1,
@@ -136,7 +138,7 @@
         "oldCores": 1
     },
     "atari5200": {
-        "version":"1",
+        "version":"4",
         "netplay": 1,
         "state": 1,
         "asmjs": 1,
@@ -181,7 +183,7 @@
         "oldCores": 1
     },
     "gb": {
-        "version":"8",
+        "version":"12",
         "netplay": 0,
         "state": 1,
         "old": {"wasm":0, "asmjs":1 },
@@ -200,10 +202,10 @@
         "oldCores": 1
     },
     "gba": {
-        "version":"6",
+        "version":"10",
         "netplay": 0,
-        "old": {"wasm":0, "asmjs":1 },
         "state": 1,
+        "old": {"wasm":0, "asmjs":1 },
         "asmjs": 1,
         "wasm": 1,
         "newCores": 1,
@@ -255,7 +257,7 @@
         "oldCores": 1
     },
     "psx": {
-        "version":"10",
+        "version":"11",
         "netplay": 0,
         "state": 1,
         "asmjs": 0,
@@ -264,7 +266,7 @@
         "oldCores": 1
     },
     "n64": {
-        "version":"9",
+        "version":"13",
         "netplay": 1,
         "state": 1,
         "asmjs": 0,
@@ -274,7 +276,7 @@
         "oldCores": 1
     },
     "nds": {
-        "version":"12",
+        "version":"16",
         "old": {"wasm":1, "asmjs":1 },
         "netplay": 0,
         "state": 1,
@@ -302,12 +304,13 @@
         "oldCores": 1
     },
     "mame2003": {
-        "version":"1",
+        "version":"5",
+        "old": {"wasm":0, "asmjs":1 },
         "netplay": 1,
         "state": 1,
-        "asmjs": 1,
-        "wasm": 0,
-        "newCores": 0,
+        "asmjs": 0,
+        "wasm": 1,
+        "newCores": 1,
         "oldCores": 1
     },
     "mame": {
@@ -327,14 +330,5 @@
         "wasm": 1,
         "newCores": 0,
         "oldCores": 1
-    },
-    "dos": {
-        "version":"1",
-        "netplay": 0,
-        "state": 0,
-        "asmjs": 0,
-        "wasm": 1,
-        "newCores": 1,
-        "oldCores": 0
     }
 }
