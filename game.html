@@ -48,11 +48,11 @@
 			const emuloader = document.createElement('script');
 
 			if (origin == 0) {
+				var EJS_pathtodata = "emulatorjs/data/";
+				emuloader.src = 'emulatorjs/data/loader.js';
+			} else {
 				var EJS_pathtodata = "https://raw.githack.com/ethanaobrien/emulatorjs/main/data/";
 				emuloader.src = "https://raw.githack.com/ethanaobrien/emulatorjs/main/data/loader.js";
-			} else {
-				var EJS_pathtodata = "EmulatorJS/";
-				emuloader.src = 'EmulatorJS/loader.js';
 			}
 
 			document.body.append(emuloader);
