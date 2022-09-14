@@ -46,14 +46,8 @@
 			var EJS_core = params.get('ver');
 			var EJS_DEBUG_XX = true;
 			const emuloader = document.createElement('script');
-
-			if (origin == 0) {
-				var EJS_pathtodata = "emulatorjs/data/";
-				emuloader.src = 'emulatorjs/data/loader.js';
-			} else {
-				var EJS_pathtodata = "https://raw.githack.com/ethanaobrien/emulatorjs/main/data/";
-				emuloader.src = "https://raw.githack.com/ethanaobrien/emulatorjs/main/data/loader.js";
-			}
+			var EJS_pathtodata = "EmulatorJS/data/";
+			emuloader.src = 'EmulatorJS/data/loader.js';
 
 			document.body.append(emuloader);
 		}
