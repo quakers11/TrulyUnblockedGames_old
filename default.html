@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8" />
 	<title>Nothing to See Here</title>
@@ -9,7 +10,8 @@
 			background-color: rgb(20, 20, 20);
 		}
 
-		a, .tab button {
+		a,
+		.tab button {
 			color: rgb(220, 220, 220);
 		}
 
@@ -50,11 +52,13 @@
 		}
 	</style>
 </head>
+
 <body>
 	<h1>Choose a console</h1>
 
 	<div class="tab">
-		<button class="tablinks NES" onclick="updateTabs('NES'); updateOptions();">Nintendo Entertainment System</button>
+		<button class="tablinks NES" onclick="updateTabs('NES'); updateOptions();">Nintendo Entertainment
+			System</button>
 		<button class="tablinks GBA" onclick="updateTabs('GBA'); updateOptions();">Game Boy Advance</button>
 		<button class="tablinks N64" onclick="updateTabs('N64'); updateOptions();">Nintendo 64</button>
 		<button class="tablinks Web" onclick="updateTabs('Web'); updateOptions();">Web</button>
@@ -69,8 +73,10 @@
 		<div id="emu">
 			<label for="emuselect" id="emulabel">Choose an emulator:</label>
 			<select id="emuselect" onchange="updateOptions()">
-				<option>EmulatorJS</option> <!--0-->
-				<option>NeptunJS</option> <!--1-->
+				<option>EmulatorJS</option>
+				<!--0-->
+				<option>NeptunJS</option>
+				<!--1-->
 			</select>
 		</div>
 		<div id="res">
@@ -289,4 +295,5 @@
 		}
 	</script>
 </body>
+
 </html>

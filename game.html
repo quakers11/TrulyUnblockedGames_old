@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title></title>
+	<title>Nothing to See Here</title>
 	<style>
 		body {
 			color: rgb(170, 170, 170);
@@ -45,6 +45,10 @@
 			var EJS_gameUrl = 'ROMs/' + params.get('ver') + '/' + params.get('game') + '.zip';
 			var EJS_core = params.get('ver');
 			var EJS_DEBUG_XX = true;
+			if (sessionStorage.oldCores == 1) {
+				var EJS_oldCores = true;
+				console.log("Using old cores!");
+			}
 			const emuloader = document.createElement('script');
 			var EJS_pathtodata = "EmulatorJS/data/";
 			emuloader.src = 'EmulatorJS/data/loader.js';
