@@ -289,13 +289,21 @@
 			for (let i = 0; i < coolmathedit.length; i++) {
 				if (coolmathedit[i][0].toLowerCase().includes(getId("searchbox").value.toLowerCase())) {
 					el = document.createElement('a');
-					el.textContent = coolmathedit[i][0]
+					el.textContent = coolmathedit[i][0];
 					el.className = 'webelements';
 					el.href = coolmathedit[i][1];
 					el.setAttribute('target', '_blank');
 					getId('Web').appendChild(el.cloneNode(true));
 				}
 			}
+		}
+
+		function updateLinks2() {
+			fetch("links.json")
+				.then((response) => response.json())
+				.then((data) => x = data)
+			
+			print(x)
 		}
 
 		function toggleoldcores() {
