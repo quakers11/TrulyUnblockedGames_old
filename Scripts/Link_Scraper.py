@@ -145,6 +145,7 @@ def main():
     print("google: " + str(len(output["google"])))
 
     with open("Website/links.json", "w") as f:
+        f.write("links = ")
         f.write(json.dumps(output, separators=(',', ':')))
 
 

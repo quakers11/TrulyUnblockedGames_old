@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>Nothing to See Here</title>
+	<title>Google</title>
 	<style>
 		body {
 			color: rgb(220, 220, 220);
@@ -50,6 +50,24 @@
 			margin-left: 10px;
 			margin-top: 16px;
 		}
+
+		.cores {
+			border: none;
+			outline: none;
+			margin-left: 10px;
+			padding: 6px 12px;
+			border-radius: 8px;
+			transition: 0.3s;
+		}
+
+		.cores.inactive {
+			background-color: #1495ff;
+		}
+
+		.cores.active {
+			background-color: #0b518a;
+			color: rgb(220, 220, 220);
+		}
 	</style>
 </head>
 
@@ -57,8 +75,7 @@
 	<h1>Choose a console</h1>
 
 	<div class="tab">
-		<button class="tablinks NES" onclick="updateTabs('NES'); updateOptions();">Nintendo Entertainment
-			System</button>
+		<button class="tablinks NES" onclick="updateTabs('NES'); updateOptions();">Nintendo Entertainment System</button>
 		<button class="tablinks GBA" onclick="updateTabs('GBA'); updateOptions();">Game Boy Advance</button>
 		<button class="tablinks N64" onclick="updateTabs('N64'); updateOptions();">Nintendo 64</button>
 		<button class="tablinks Web" onclick="updateTabs('Web'); updateOptions();">Web</button>
@@ -168,9 +185,9 @@
 	<div id="Web" class="tabcontent">
 	</div>
 
-	<button onclick="toggleoldcores()">Toggle Old Cores</button>
+	<button onclick="toggleoldcores()" class="cores inactive">Toggle Old Cores</button>
 
-	<script src="edit.js"></script>
+	<script src="links.js"></script>
 
 	<script>
 		// page loading stuff
@@ -282,6 +299,7 @@
 		}
 
 		function updateLinks() {
+			/*
 			main = getId('Web');
 			while (main.firstChild) { // clear all children
 				main.removeChild(main.firstChild);
@@ -295,22 +313,17 @@
 					el.setAttribute('target', '_blank');
 					getId('Web').appendChild(el.cloneNode(true));
 				}
-			}
-		}
-
-		function updateLinks2() {
-			fetch("links.json")
-				.then((response) => response.json())
-				.then((data) => x = data)
-			
-			print(x)
+			}*/
 		}
 
 		function toggleoldcores() {
+			btn = getClass("cores")[0];
 			if (sessionStorage.oldCores == "0"){
 				sessionStorage.oldCores = "1";
+				btn.className = "cores active";
 			} else {
 				sessionStorage.oldCores = "0";
+				btn.className = "cores inactive";
 			}
 		}
 	</script>
