@@ -19,61 +19,44 @@
 	<div id="base">
 	</div>
 	<script>
-		const resolutions = [[640, 480], [960, 720], [1280, 960]];
 		const params = new URLSearchParams(window.location.search);
-		const res = sessionStorage.getItem('o_res');
-		const emu = sessionStorage.getItem('o_emu');
 		const origin = sessionStorage.getItem('origin');
 		const base = document.getElementById('base');
-		if (emu == 0) {
-			if (sessionStorage.emuWidth) {
-				base.style.width = String(sessionStorage.emuWidth) + 'px';
-			} else {
-				base.style.width = String(resolutions[res][0]) + 'px';
-			}
-			if (sessionStorage.emuHeight) {
-				base.style.height = String(sessionStorage.emuHeight) + 'px';
-			} else {
-				base.style.height = String(resolutions[res][1]) + 'px';
-			}
-			base.style.maxWidth = '100%';
-			base.style.margin = 'auto';
-			const innerDiv = document.createElement('div');
-			innerDiv.id = 'emulator';
-			base.appendChild(innerDiv);
-			var EJS_player = '#emulator';
-			var EJS_gameUrl = 'ROMs/' + params.get('ver') + '/' + params.get('game') + '.zip';
-			var EJS_core = params.get('ver');
-			var EJS_DEBUG_XX = true;
-			if (sessionStorage.oldCores == 1) {
-				var EJS_oldCores = true;
-				console.log("Using old cores!");
-			}
-			const emuloader = document.createElement('script');
+		if (sessionStorage.emuWidth) {
+			base.style.width = String(sessionStorage.emuWidth) + 'px';
+		} else {
+			base.style.width = '960px';
+		}
+		if (sessionStorage.emuHeight) {
+			base.style.height = String(sessionStorage.emuHeight) + 'px';
+		} else {
+			base.style.height = '720px';
+		}
+		base.style.maxWidth = '100%';
+		base.style.margin = 'auto';
+		const innerDiv = document.createElement('div');
+		innerDiv.id = 'emulator';
+		base.appendChild(innerDiv);
+		var EJS_player = '#emulator';
+		var EJS_gameUrl = 'ROMs/' + params.get('ver') + '/' + params.get('game') + '.zip';
+		var EJS_core = params.get('ver');
+		var EJS_DEBUG_XX = true;
+		if (sessionStorage.oldCores == 1) {
+			var EJS_oldCores = true;
+			console.log("Using old cores!");
+		}
+		const emuloader = document.createElement('script');
+		if (sessionStorage.origin == 1) {
+			var EJS_pathtodata = "https://raw.githack.com/EmulatorJS/EmulatorJS/main/data/";
+			emuloader.src = "https://raw.githack.com/EmulatorJS/EmulatorJS/main/data/loader.js";
+			console.log("Loading from github");
+		} else {
 			var EJS_pathtodata = "EmulatorJS/data/";
 			emuloader.src = 'EmulatorJS/data/loader.js';
-
-			document.body.append(emuloader);
+			console.log("Loading locally");
 		}
-		if (emu == 1) {
-			base.id = 'emulator';
-			var NepPlayer = '#emulator';
-			var NepEmu = params.get('ver');
-			var NepLang = 'en';
-			var gameUrl = 'ROMs/' + params.get('ver') + '/' + params.get('game') + '.zip';
 
-			const njsloader = document.createElement('script');
-
-			njsloader.src = 'loaders/njsLoader.js';
-			//njsloader.src = 'https://mem.neptunjs.com/njs/njsLoader.js'; // additional launcher
-			document.body.append(njsloader);
-
-			var style = document.createElement("link");
-			style.href = "NeptunJS/neptun.css";
-			style.rel = "stylesheet";
-			style.type = "text/css";
-			document.head.appendChild(style);
-		}
+		document.body.append(emuloader);
 	</script>
 </body>
 </html>

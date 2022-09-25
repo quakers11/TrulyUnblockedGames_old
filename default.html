@@ -58,6 +58,7 @@
 			padding: 6px 12px;
 			border-radius: 8px;
 			transition: 0.3s;
+			display: inline;
 		}
 
 		.cores.inactive {
@@ -75,44 +76,18 @@
 	<h1>Choose a console</h1>
 
 	<div class="tab">
-		<button class="tablinks NES" onclick="updateTabs('NES'); updateOptions();">Nintendo Entertainment System</button>
-		<button class="tablinks GBA" onclick="updateTabs('GBA'); updateOptions();">Game Boy Advance</button>
-		<button class="tablinks N64" onclick="updateTabs('N64'); updateOptions();">Nintendo 64</button>
-		<button class="tablinks Web" onclick="updateTabs('Web'); updateOptions();">Web</button>
+		<button class="tablinks NES" onclick="updateTabs('NES');">Nintendo Entertainment System</button>
+		<button class="tablinks GBA" onclick="updateTabs('GBA');">Game Boy Advance</button>
+		<button class="tablinks N64" onclick="updateTabs('N64');">Nintendo 64</button>
+		<button class="tablinks Web" onclick="updateTabs('Web');">Web</button>
 	</div>
 
 	<br />
 	<br />
 	<br />
+	<br />
 
-	<div id="options" style="padding: 6px 12px;">
-		<h2 id="optionstitle">Options</h2>
-		<div id="emu">
-			<label for="emuselect" id="emulabel">Choose an emulator:</label>
-			<select id="emuselect" onchange="updateOptions()">
-				<option>EmulatorJS</option>
-				<!--0-->
-				<option>NeptunJS</option>
-				<!--1-->
-			</select>
-		</div>
-		<div id="res">
-			<label for="resselect" id="reslabel">Choose a resolution:</label>
-			<select id="resselect" onchange="updateOptions()">
-				<option>640x480</option>
-				<option>960x720</option>
-				<option>1280x960</option>
-			</select>
-		</div>
-		<div id="mirror">
-			<label for="mirrorcheck" id="mirrorlabel">Edit Mirror?</label>
-			<input type="checkbox" id="mirrorcheck" onchange="updateOptions()" checked />
-		</div>
-		<div id="search">
-			<label for="searchbox" id="searchlabel">Search: </label>
-			<input type="text" id="searchbox" onkeyup="updateLinks()" />
-		</div>
-	</div>
+	<button id="coretoggle" onclick="toggleoldcores()" class="cores inactive">Toggle Old Cores</button>
 
 	<div id="NES" class="tabcontent">
 		<h2>Nintendo Entertainment System</h2>
@@ -185,8 +160,6 @@
 	<div id="Web" class="tabcontent">
 	</div>
 
-	<button onclick="toggleoldcores()" class="cores inactive">Toggle Old Cores</button>
-
 	<script src="links.js"></script>
 
 	<script>
@@ -201,11 +174,6 @@
 		svars = getSessionStorage();
 
 		updateTabs(svars.openTab);
-
-		getId('emuselect').selectedIndex = svars.o_emu;
-		getId('resselect').selectedIndex = svars.o_res;
-
-		updateOptions();
 
 		updateLinks();
 
@@ -227,18 +195,6 @@
 				svars.openTab = 'NES';
 			}
 
-			if (sessionStorage.o_emu) {
-				svars.o_emu = sessionStorage.o_emu;
-			} else {
-				svars.o_emu = 0;
-			}
-
-			if (sessionStorage.o_res) {
-				svars.o_res = sessionStorage.o_res;
-			} else {
-				svars.o_res = 1;
-			}
-
 			return svars;
 		}
 
@@ -258,43 +214,11 @@
 					tablinks[i].className += ' active';
 				}
 			}
-		}
-
-		function updateOptions() {
-			emu = getId('emu');
-			res = getId('res');
-			mirror = getId('mirror');
-			search = getId('search');
-
-			svars.o_emu = emu.children[1].selectedIndex;
-			sessionStorage.o_emu = emu.children[1].selectedIndex;
-			svars.o_res = res.children[1].selectedIndex;
-			sessionStorage.o_res = res.children[1].selectedIndex;
-
-			switch (svars.openTab) {
-				case 'Web':
-					emu.style.display = "none";
-					res.style.display = "none";
-
-					mirror.style.display = "block";
-					search.style.display = "block";
-					break;
-				default:
-					emu.style.display = "block";
-					res.style.display = "block";
-
-					mirror.style.display = "none";
-					search.style.display = "none";
-
-					switch (emu.children[1].selectedIndex) {
-						case 0:
-							res.style.display = "block";
-							break;
-						default:
-							res.style.display = "none";
-							break;
-					}
-					break;
+			cores = getId("coretoggle");
+			if (tab == "Web") {
+				cores.style.display = "none";
+			} else {
+				cores.style.display = "inline";
 			}
 		}
 
@@ -317,7 +241,7 @@
 		}
 
 		function toggleoldcores() {
-			btn = getClass("cores")[0];
+			btn = getId("coretoggle");
 			if (sessionStorage.oldCores == "0"){
 				sessionStorage.oldCores = "1";
 				btn.className = "cores active";
