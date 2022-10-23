@@ -45,13 +45,8 @@
 			border-top: none;
 		}
 
-		.webelements {
-			display: block;
-			margin-left: 10px;
-			margin-top: 16px;
-		}
-
-		.cores {
+		.toggle {
+			color: rgb(220, 220, 220);
 			border: none;
 			outline: none;
 			margin-left: 10px;
@@ -61,13 +56,12 @@
 			display: inline;
 		}
 
-		.cores.inactive {
+		.inactive {
 			background-color: #1495ff;
 		}
 
-		.cores.active {
+		.active {
 			background-color: #0b518a;
-			color: rgb(220, 220, 220);
 		}
 	</style>
 </head>
@@ -87,7 +81,7 @@
 	<br />
 	<br />
 
-	<button id="coretoggle" onclick="toggleoldcores()" class="cores inactive">Toggle Old Cores</button>
+	<button id="coretoggle" onclick="toggleoldcores()" class="toggle inactive">Toggle Old Cores</button>
 
 	<div id="NES" class="tabcontent">
 		<h2>Nintendo Entertainment System</h2>
@@ -158,6 +152,11 @@
 	</div>
 
 	<div id="Web" class="tabcontent">
+		<label for="websearch">Search: </label>
+		<input type="text" id="websearch" onkeyup="updateLinks2();" />
+		<br />
+		<br />
+		<div id="webgames"></div>
 	</div>
 
 	<script src="links.js"></script>
@@ -168,6 +167,11 @@
 		console.log('Set session storage \'origin\' to 0 to run the emulator hosted on this domain, 1 to run the loader script hosted on this domain, and 2 to run the loader script hosted elsewhere.');
 		console.log('Set session storage \'emuWidth\' and \'emuHeight\' to set a custom size for EmulatorJS.');
 
+		linknames = links.names;
+		linknamelist = Object.keys(linknames).sort();
+
+		delete links.names;
+
 		sessionStorage.origin = 0;
 		sessionStorage.oldCores = 0;
 
@@ -175,7 +179,7 @@
 
 		updateTabs(svars.openTab);
 
-		updateLinks();
+		updateLinks2();
 
 		// essential functions
 		function getId(id) {
@@ -222,32 +226,43 @@
 			}
 		}
 
-		function updateLinks() {
-			/*
-			main = getId('Web');
-			while (main.firstChild) { // clear all children
-				main.removeChild(main.firstChild);
-			}
-			for (let i = 0; i < coolmathedit.length; i++) {
-				if (coolmathedit[i][0].toLowerCase().includes(getId("searchbox").value.toLowerCase())) {
-					el = document.createElement('a');
-					el.textContent = coolmathedit[i][0];
-					el.className = 'webelements';
-					el.href = coolmathedit[i][1];
-					el.setAttribute('target', '_blank');
-					getId('Web').appendChild(el.cloneNode(true));
+		function updateLinks2() {
+			main = getId('webgames');
+			search = getId('websearch');
+			main.innerHTML = ""; // Clear all children
+			games = [];
+			for (const list in links) {
+				gamearr = links[list];
+				for (const g in gamearr) {
+					game = gamearr[g];
+					games.push([game[0], game[1], list]);
 				}
-			}*/
+			}
+			games.sort();
+			
+			for (const g in games) {
+				game = games[g];
+				if (game[0].toLowerCase().includes(getId("websearch").value.toLowerCase())) {
+					el = document.createElement("a");
+					el.textContent = game[0] + " - " + linknames[game[2]];
+					el.style.color = "hsl(" + (360 / linknamelist.length) * linknamelist.indexOf(game[2]) + ", 100%, 90%)";
+					el.href = game[1];
+					el.setAttribute("target", "_blank");
+					main.appendChild(el.cloneNode(true));
+					main.appendChild(document.createElement("br"));
+					main.appendChild(document.createElement("br"));
+				}
+			}
 		}
 
 		function toggleoldcores() {
 			btn = getId("coretoggle");
 			if (sessionStorage.oldCores == "0"){
 				sessionStorage.oldCores = "1";
-				btn.className = "cores active";
+				btn.className = "toggle active";
 			} else {
 				sessionStorage.oldCores = "0";
-				btn.className = "cores inactive";
+				btn.className = "toggle inactive";
 			}
 		}
 	</script>

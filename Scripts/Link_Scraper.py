@@ -6,12 +6,28 @@ import concurrent.futures
 debug = True
 
 
-def exists(url):
+def _exists_old(url):
     page = requests.get(url)
     if page.status_code != 404:
         return True
     return False
 
+def exists(url):
+    return requests.head(url).status_code == 200
+
+def editprocessgame(game):
+    link = game.findChildren()[0]
+    gameurl = "https://edit.coolmath-games.com" + link["href"] + "/play"
+
+    if not exists(gameurl):
+        return
+
+    name = link.get_text()
+
+    if debug:
+        print([name, gameurl])
+    return [name, gameurl]
+    
 
 def edit():
     output = []
@@ -26,19 +42,12 @@ def edit():
     games = soup.find_all(
         "div", class_="view-content")[0].find_all("span", class_="game-title")
 
-    for game in games:
-        link = game.findChildren()[0]
-        gameurl = "https://edit.coolmath-games.com" + link["href"] + "/play"
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        results = executor.map(editprocessgame, games)
 
-        if not exists(gameurl):
-            continue
+        results = [x for x in results if x != None]
 
-        name = link.get_text()
-
-        output.append([name, gameurl])
-        if debug:
-            print([name, gameurl])
-    return output
+        return results
 
 
 def coolmath():
@@ -55,14 +64,12 @@ def coolmath():
     games = soup.find_all(
         "div", class_="view-content")[2].find_all("span", class_="game-title")
 
-    # for each game, if it's last sibling had the first class "icon-gamethumbnail-all-game-pg", it is a flash game and needs to be removed
-    for game in games:
-        if game.parent.contents[-1]["class"][0] == 'icon-gamethumbnail-all-game-pg':
-            games.remove(game)
-
     for game in games:
         link = game.contents[0]
         gameurl = "https://www.coolmathgames.com" + link["href"] + "/play"
+
+        if game.parent.contents[-1]["class"][0] == 'icon-gamethumbnail-all-game-pg':
+            continue
 
         if not exists(gameurl):
             continue
@@ -119,16 +126,25 @@ def unblocked66():
 
         return results
 
-
 def google():
     return [
         ["Google Snake", "https://www.google.com/fbx?fbx=snake_arcade"],
+
         ["Google Minesweeper", "https://www.google.com/fbx?fbx=minesweeper"],
+
         ["Google Pacman", "https://www.google.com/fbx?fbx=pacman"],
+
+        ["Google Tic-Tac-Toe", "https://www.google.com/fbx?fbx=tic_tac_toe"],
+
+        ["Google Solitaire", "https://www.google.com/fbx?fbx=solitaire"],
+
         ["Google Doodle Baseball",
             "https://www.google.com/logos/2019/july4th19/r6/july4th19.html?hl=en&sdoodles=1"],
+
         ["Google Doodle Halloween",
-            "https://www.google.com/logos/2020/halloween20/rc1/halloween20.html?hl=en&sdoodles=1"]
+            "https://www.google.com/logos/2020/halloween20/rc1/halloween20.html?hl=en&sdoodles=1"],
+        
+        ["All Google Doodles", "https://www.google.com/doodles"]
     ]
 
 
@@ -139,12 +155,16 @@ def main():
     output["unblocked66"] = unblocked66()
     output["google"] = google()
 
+    output["names"] = {
+        "coolmath": "Coolmath Games", "edit": "Coolmath Games Mirror", "unblocked66": "Unblocked Games 66 EZ", "google": "Google"
+    }
+
     print("coolmath: " + str(len(output["coolmath"])))
     print("edit: " + str(len(output["edit"])))
     print("unblocked66: " + str(len(output["unblocked66"])))
     print("google: " + str(len(output["google"])))
 
-    with open("Website/links.json", "w") as f:
+    with open("Website/links.js", "w") as f:
         f.write("links = ")
         f.write(json.dumps(output, separators=(',', ':')))
 
