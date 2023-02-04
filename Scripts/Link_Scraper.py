@@ -83,21 +83,47 @@ def coolmath():
 
 
 def unblocked66processgame(game):
-    link = game.contents[0].contents[0]
+    link = game.find("a")
     gameurl = "https://sites.google.com" + link["href"]
 
     if not exists(gameurl):
         return
 
-    try:
-        gamepage = requests.get(gameurl)
-        if gamepage.status_code == 404:
-            return
-        gamesoup = bs(gamepage.content, "html.parser")
-        innerurl = gamesoup.find_all("iframe")[1]["src"]
-        if "x-shockwave-flash" in innerurl:
-            return
-    except:
+    gamepage = requests.get(gameurl)
+    if gamepage.status_code == 404:
+        return
+    gamesoup = bs(gamepage.content, "html.parser")
+
+    buttons = gamesoup.find_all(attrs={"class": "w536ob"})
+
+    if len(buttons) == 0:
+        return None
+    elif len(buttons) == 1:
+        pass
+    elif len(buttons) == 2:
+        gameurl = [x for x in (bs(buttons[1].attrs["data-code"], "html.parser").find("script").string.split()) if "xml" in x][0][1:][:-2]
+        #button = buttons[1]
+        #codesoup = bs(button.attrs["data-code"], "html.parser")
+        #script = codesoup.find("script").string
+        #lines = script.split()
+        #xml = [x for x in lines if "xml" in x]
+        #gameurl = xml[0][1:][:-2]
+    else:
+        print("Error in " + link.get_text() + ". More than 2 buttons")
+
+    return
+    found = False
+    for idx, button in enumerate(buttons):
+        if "data-code" in button.attrs:
+            if found == True:
+                print("Duplicate found in ", link.get_text())
+            found = True
+    #print(len(buttons))
+    #print(button["data-code"])
+    
+    return
+    innerurl = gamesoup.find_all("iframe")[1]["src"]
+    if "x-shockwave-flash" in innerurl:
         return
 
     name = link.get_text()
@@ -108,21 +134,31 @@ def unblocked66processgame(game):
 def unblocked66():
     output = []
 
-    url = "https://sites.google.com/site/unblockedgames66ez/"
+    url = "https://sites.google.com/site/unblockedgames66ez/home"
     page = requests.get(url)
 
     if debug:
         print("Request succeded")
 
     soup = bs(page.content, "html.parser")
+    
     # find all game links
     games = soup.find_all(
-        "div", class_="sites-embed-content sites-sidebar-nav")[0].contents[0].contents[1:]
+        "div", class_="jYxBte Fpy8Db")
+    
+    games = soup.find_all(attrs={"class": "jYxBte Fpy8Db"})[0].contents
+
+    unblocked66processgame(games[2])
+
+    #for game in games:
+        #unblocked66processgame(game)
+
+    return
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
         results = executor.map(unblocked66processgame, games)
 
-        results = [x for x in results if x != None]
+        #results = [x for x in results if x != None]
 
         return results
 
@@ -170,4 +206,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    #main()
+    unblocked66()
