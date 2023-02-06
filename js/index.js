@@ -7,6 +7,10 @@ console.log(
 	"Set session storage 'emuWidth' and 'emuHeight' to set a custom size for EmulatorJS."
 );
 
+const toggle = getId("coretoggle");
+toggle.className +=
+	" " + (localStorage.oldCores == "1" ? "active" : "inactive");
+
 let links, linknames, linknamelist;
 let page = 0;
 let games = [];
@@ -99,11 +103,11 @@ function updateTabs(tab) {
 
 function toggleoldcores() {
 	btn = getId("coretoggle");
-	if (sessionStorage.oldCores == "0") {
-		sessionStorage.oldCores = "1";
+	if (localStorage.oldCores == "0") {
+		localStorage.oldCores = "1";
 		btn.className = "toggle active";
 	} else {
-		sessionStorage.oldCores = "0";
+		localStorage.oldCores = "0";
 		btn.className = "toggle inactive";
 	}
 }
