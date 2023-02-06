@@ -25,7 +25,7 @@ p.className = "domainname";
 div.appendChild(a);
 div.appendChild(p);
 
-fetch("/links.json")
+fetch("links.json")
 	.then((res) => {
 		return res.json();
 	})
@@ -56,8 +56,6 @@ fetch("/links.json")
 		sortLinks();
 
 		renderLinks();
-
-		updatePageDisplay();
 	});
 
 // essential functions
