@@ -1,0 +1,75 @@
+body {
+	color: rgb(220, 220, 220);
+	background-color: rgb(20, 20, 20);
+}
+
+a,
+.tab button {
+	color: rgb(220, 220, 220);
+}
+
+.tab {
+	background-color: #1495ff;
+}
+
+.tab button {
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+	border-radius: 12px;
+	margin-left: 8px;
+}
+
+.tab button:hover {
+	background-color: #0d6fbf;
+}
+
+.tab button.active {
+	background-color: #0b518a;
+}
+
+.tabcontent {
+	display: none;
+	padding: 6px 12px;
+	border-top: none;
+}
+
+.toggle {
+	color: rgb(220, 220, 220);
+	border: none;
+	outline: none;
+	margin-left: 10px;
+	padding: 6px 12px;
+	border-radius: 8px;
+	transition: 0.3s;
+	display: inline;
+}
+
+.inactive {
+	background-color: #1495ff;
+}
+
+.active {
+	background-color: #0b518a;
+}
+
+.webcontent {
+	display: block;
+	padding-bottom: 14px;
+}
+
+.weblinks {
+	display: inline;
+	font-size: 20px;
+	padding-right: 5px;
+}
+
+.domainname {
+	display: inline;
+	font-size: 12px;
+	color: rgb(100, 100, 100);
+}
