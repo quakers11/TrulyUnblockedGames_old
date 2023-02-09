@@ -1,20 +1,21 @@
 // page loading stuff
 console.log("Advanced features:");
 console.log(
-	"Set session storage 'origin' to 0 to run the emulator hosted on this domain, 1 to run the loader script hosted on this domain, and 2 to run the loader script hosted elsewhere."
+	"Set local storage \"origin\" to 0 to run the emulator hosted on this domain, 1 to run it from GitHub, and 2 to run it from a launcher file."
 );
 console.log(
-	"Set session storage 'emuWidth' and 'emuHeight' to set a custom size for EmulatorJS."
+	"Set session storage \"emuWidth\" and \"emuHeight\" to set a custom size for EmulatorJS."
 );
 
 const toggle = getId("coretoggle");
 toggle.className +=
 	" " + (localStorage.oldCores == "1" ? "active" : "inactive");
 
-let links, linknames, linknamelist;
+let linknames, linknamelist;
 let page = 0;
 let games = [];
 let matches = [];
+let filteredsites = [];
 
 const linksperpage = 200;
 
@@ -29,38 +30,33 @@ p.className = "domainname";
 div.appendChild(a);
 div.appendChild(p);
 
-fetch("links.json")
-	.then((res) => {
-		return res.json();
-	})
-	.then((data) => {
-		links = data;
-		linknamelist = Object.keys(links.names).sort();
-		linknames = links.names;
+linknamelist = Object.keys(links.names).sort();
+linknames = links.names;
 
-		delete links.names; // delete this so we can iterate through the object without this being there
+delete links.names; // delete this so we can iterate through the object without this being there
 
-		sessionStorage.origin = 0;
-		sessionStorage.oldCores = 0;
+addSiteSelectors();
 
-		getLocalStorage();
+sessionStorage.origin = 0;
+sessionStorage.oldCores = 0;
 
-		updateTabs(localStorage.openTab);
+getLocalStorage();
 
-		const domain = document.createElement("a");
-		for (const site in links) {
-			let sitelist = links[site];
-			for (const game of sitelist) {
-				domain.href = game[1];
-				games.push([game[0], game[1], site, domain.hostname]);
-			}
-		}
-		games.sort();
+updateTabs(localStorage.openTab);
 
-		sortLinks();
+const domain = document.createElement("a");
+for (const site in links) {
+	let sitelist = links[site];
+	for (const game of sitelist) {
+		domain.href = game[1];
+		games.push([game[0], game[1], site, domain.hostname]);
+	}
+}
+games.sort();
 
-		renderLinks();
-	});
+sortLinks();
+
+renderLinks();
 
 // essential functions
 function getId(id) {
@@ -71,9 +67,29 @@ function getClass(className) {
 	return document.getElementsByClassName(className);
 }
 
+function remove(arr, value) {
+	var index = arr.indexOf(value);
+	if (index > -1) {
+		arr.splice(index, 1);
+	}
+	return arr;
+}
+
 // major functions
 function getLocalStorage() {
 	if (!localStorage.openTab) localStorage.openTab = "NES";
+}
+
+function addSiteSelectors() {
+	let main = document.getElementById("siteselector");
+	let btn = document.createElement("button");
+	btn.className = "toggle inactive";
+	btn.setAttribute("onclick", "togglesites(event);");
+	linknamelist.forEach((element) => {
+		btn.textContent = linknames[element];
+		btn.setAttribute("data", element);
+		main.appendChild(btn.cloneNode(true));
+	});
 }
 
 function updateTabs(tab) {
@@ -101,6 +117,26 @@ function updateTabs(tab) {
 	}
 }
 
+function togglesites(event) {
+	const el = event.currentTarget;
+
+	let classes = el.className.split(" ");
+
+	if (classes.includes("inactive")) {
+		classes = remove(classes, "inactive");
+		classes.push("active");
+		filteredsites.push(el.attributes["data"].nodeValue);
+	} else {
+		classes = remove(classes, "active");
+		classes.push("inactive");
+		filteredsites = remove(filteredsites, el.attributes["data"].nodeValue);
+	}
+
+	el.className = classes.join(" ");
+
+	onSearchInput();
+}
+
 function toggleoldcores() {
 	btn = getId("coretoggle");
 	if (localStorage.oldCores == "0") {
@@ -117,7 +153,8 @@ function sortLinks() {
 
 	for (const game of games) {
 		if (
-			game[0].toLowerCase().includes(getId("websearch").value.toLowerCase())
+			game[0].toLowerCase().includes(getId("websearch").value.toLowerCase()) &&
+			!filteredsites.includes(game[2])
 		) {
 			matches.push(game);
 		}
@@ -143,11 +180,13 @@ async function renderLinks() {
 		main.appendChild(div.cloneNode(true));
 	}
 
-	const disp = getId("pagedisplay");
+	const disp = getClass("pagedisplay");
 
-	disp.textContent = `Page ${page + 1} of ${
-		Math.floor(matches.length / linksperpage) + 1
-	}`;
+	Array.from(disp).forEach((element) => {
+		element.textContent = `Page ${page + 1} of ${
+			Math.floor(matches.length / linksperpage) + 1
+		}`;
+	});
 }
 
 async function applyLinks(games) {
@@ -195,7 +234,20 @@ function prevPage() {
 }
 
 function onSearchInput() {
+	console.log("running search input");
 	page = 0;
 	sortLinks();
 	renderLinks();
+}
+
+function toggleEmulator() {
+	let main = getId("emulatortoggle");
+
+	if (main.textContent == "EmulatorJS") {
+		localStorage.emu = "NJS";
+		main.textContent = "NeptunJS";
+	} else {
+		localStorage.emu = "EJS";
+		main.textContent = "EmulatorJS";
+	}
 }

@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<title>Google</title>
 		<link rel="stylesheet" href="css/index.css" />
+		<script src="data/links.js"></script>
 	</head>
 
 	<body>
@@ -30,6 +31,9 @@
 		<button id="coretoggle" onclick="toggleoldcores();" class="toggle">
 			Toggle Old Cores
 		</button>
+
+		<!--Not really used as a toggle-->
+		<button id="emulatortoggle" class="toggle inactive" onclick="toggleEmulator();">EmulatorJS</button>
 
 		<div id="NES" class="tabcontent">
 			<h2>Nintendo Entertainment System</h2>
@@ -160,12 +164,16 @@
 			<input type="text" id="websearch" oninput="onSearchInput();" />
 			<br />
 			<br />
-			<p id="pagedisplay"></p>
+			<div id="siteselector"></div>
+			<p class="pagedisplay"></p>
 			<button onclick="prevPage();">Previous</button>
 			<button onclick="nextPage();">Next</button>
 			<br />
 			<br />
 			<div id="webgames"></div>
+			<p class="pagedisplay"></p>
+			<button onclick="prevPage();">Previous</button>
+			<button onclick="nextPage();">Next</button>
 		</div>
 		<br /><br /><br /><br /><br />
 

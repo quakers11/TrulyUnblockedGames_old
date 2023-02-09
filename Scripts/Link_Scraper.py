@@ -190,7 +190,8 @@ def main():
 	print("unblocked66: " + str(len(output["unblocked66"])))
 	print("google: " + str(len(output["google"])))
 
-	with open("links.json", "w+") as f:
+	with open("data/links.js", "w+") as f:
+		f.write("const links=")
 		f.write(json.dumps(output, separators=(',', ':')))
 
 
