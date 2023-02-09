@@ -1,3 +1,6 @@
 [submodule "EmulatorJS"]
 	path = EmulatorJS
 	url = https://github.com/EmulatorJS/EmulatorJS.git
+[submodule "NeptunJS"]
+	path = NeptunJS
+	url = https://github.com/lyarinet/NeptunJS.git
