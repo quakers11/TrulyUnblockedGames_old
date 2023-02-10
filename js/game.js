@@ -42,13 +42,15 @@ switch (emu) {
 	}
 	case "NJS": {
 		var NepPlayer = "#emulator";
+		var NepLang = "en";
 		var gameURL =
 			"ROMs/" + params.get("ver") + "/" + params.get("game") + ".zip";
-		var NepEmu = params.get("ver");
-		var NepXoom = "enable";
+		//var NepEmu = params.get("ver");
+		//var NepZoom = "enable";
 
 		const emuloader = document.createElement("script");
-		emuloader.src = "https://mem.neptunjs.com/njs/njsLoader.js";
+		emuloader.src = "njsLoader.js";
+		//emuloader.setAttribute("data-name", "njs2");
 
 		document.body.append(emuloader);
 	}
