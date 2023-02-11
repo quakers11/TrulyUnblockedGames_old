@@ -41,16 +41,16 @@ switch (emu) {
 		break;
 	}
 	case "NJS": {
-		var NepPlayer = "#emulator";
+		var NepPlayer = "#base";
 		var NepLang = "en";
-		var gameURL =
+		var gameUrl =
 			"ROMs/" + params.get("ver") + "/" + params.get("game") + ".zip";
-		//var NepEmu = params.get("ver");
-		//var NepZoom = "enable";
+
+		var NepEmu = params.get("ver");
+		var NepZoom = "enable";
 
 		const emuloader = document.createElement("script");
-		emuloader.src = "njsLoader.js";
-		//emuloader.setAttribute("data-name", "njs2");
+		emuloader.src = "https://mem.neptunjs.com/njs/njsLoader.js";
 
 		document.body.append(emuloader);
 	}
