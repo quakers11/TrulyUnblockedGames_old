@@ -589,30 +589,21 @@ var controllers,
 			resetControll === 1
 		) {
 			if (xboxMode === true) {
-				Neptq.getJSON(
-					"https://impragma.github.io/NeptunJS/config/xbox_p1.json",
-					function (_BIGARRAY) {
-						jsonP1 = _BIGARRAY;
-						controllers = jsonP1;
-					}
-				);
+				Neptq.getJSON("NeptunJS/config/xbox_p1.json", function (_BIGARRAY) {
+					jsonP1 = _BIGARRAY;
+					controllers = jsonP1;
+				});
 			} else {
 				if (NepEmu === "n64") {
-					Neptq.getJSON(
-						"https://impragma.github.io/NeptunJS/config/n64_p1.json",
-						function (_BIGARRAY) {
-							jsonP1 = _BIGARRAY;
-							controllers = jsonP1;
-						}
-					);
+					Neptq.getJSON("NeptunJS/config/n64_p1.json", function (_BIGARRAY) {
+						jsonP1 = _BIGARRAY;
+						controllers = jsonP1;
+					});
 				} else {
-					Neptq.getJSON(
-						"https://impragma.github.io/NeptunJS/config/P1.json",
-						function (_BIGARRAY) {
-							jsonP1 = _BIGARRAY;
-							controllers = jsonP1;
-						}
-					);
+					Neptq.getJSON("NeptunJS/config/P1.json", function (_BIGARRAY) {
+						jsonP1 = _BIGARRAY;
+						controllers = jsonP1;
+					});
 				}
 			}
 			resetControll = 0;
@@ -634,30 +625,21 @@ var controllers,
 				resetControll === 1
 			) {
 				if (xboxMode === true) {
-					Neptq.getJSON(
-						"https://impragma.github.io/NeptunJS/config/xbox_p1.json",
-						function (_BIGARRAY) {
-							jsonP1 = _BIGARRAY;
-							controllers = jsonP1;
-						}
-					);
+					Neptq.getJSON("NeptunJS/config/xbox_p1.json", function (_BIGARRAY) {
+						jsonP1 = _BIGARRAY;
+						controllers = jsonP1;
+					});
 				} else {
 					if (NepEmu === "n64") {
-						Neptq.getJSON(
-							"https://impragma.github.io/NeptunJS/config/n64_p1.json",
-							function (_BIGARRAY) {
-								jsonP1 = _BIGARRAY;
-								controllers = jsonP1;
-							}
-						);
+						Neptq.getJSON("NeptunJS/config/n64_p1.json", function (_BIGARRAY) {
+							jsonP1 = _BIGARRAY;
+							controllers = jsonP1;
+						});
 					} else {
-						Neptq.getJSON(
-							"https://impragma.github.io/NeptunJS/config/P1.json",
-							function (_BIGARRAY) {
-								jsonP1 = _BIGARRAY;
-								controllers = jsonP1;
-							}
-						);
+						Neptq.getJSON("NeptunJS/config/P1.json", function (_BIGARRAY) {
+							jsonP1 = _BIGARRAY;
+							controllers = jsonP1;
+						});
 					}
 				}
 				resetControll = 0;
@@ -2295,45 +2277,18 @@ var controllers,
 			xboxMode = false;
 		}
 		if (xboxMode === true) {
-			Neptq.getJSON(
-				"https://impragma.github.io/NeptunJS/config/xbox_p1.json",
-				_0x13E1B
-			);
+			Neptq.getJSON("NeptunJS/config/xbox_p1.json", _0x13E1B);
 		} else {
 			if (NepEmu === "n64") {
-				Neptq.getJSON(
-					"https://impragma.github.io/NeptunJS/config/n64_p1.json",
-					_0x13E47
-				);
-				Neptq.getJSON(
-					"https://impragma.github.io/NeptunJS/config/n64_p2.json",
-					_0x13E73
-				);
-				Neptq.getJSON(
-					"https://impragma.github.io/NeptunJS/config/n64_p3.json",
-					_0x13E9F
-				);
-				Neptq.getJSON(
-					"https://impragma.github.io/NeptunJS/config/n64_p4.json",
-					_0x13ECB
-				);
+				Neptq.getJSON("NeptunJS/config/n64_p1.json", _0x13E47);
+				Neptq.getJSON("NeptunJS/config/n64_p2.json", _0x13E73);
+				Neptq.getJSON("NeptunJS/config/n64_p3.json", _0x13E9F);
+				Neptq.getJSON("NeptunJS/config/n64_p4.json", _0x13ECB);
 			} else {
-				Neptq.getJSON(
-					"https://impragma.github.io/NeptunJS/config/P1.json",
-					_0x13EF7
-				);
-				Neptq.getJSON(
-					"https://impragma.github.io/NeptunJS/config/P2.json",
-					_0x13F23
-				);
-				Neptq.getJSON(
-					"https://impragma.github.io/NeptunJS/config/P3.json",
-					_0x13F4F
-				);
-				Neptq.getJSON(
-					"https://impragma.github.io/NeptunJS/config/P4.json",
-					_0x13F7B
-				);
+				Neptq.getJSON("NeptunJS/config/P1.json", _0x13EF7);
+				Neptq.getJSON("NeptunJS/config/P2.json", _0x13F23);
+				Neptq.getJSON("NeptunJS/config/P3.json", _0x13F4F);
+				Neptq.getJSON("NeptunJS/config/P4.json", _0x13F7B);
 			}
 		}
 		focusElement = Neptq("#" + NCSS + "Neptun");

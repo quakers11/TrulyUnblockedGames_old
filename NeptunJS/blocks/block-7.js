@@ -756,16 +756,12 @@ var meter,
 								if (load_wasm === true) {
 									//https://mem.neptunjs.com/njs/ggw/{neptunePlatform}{N64Acurate}.gge
 									load_proteus =
-										"https://impragma.github.io/NeptunJS/cores/" +
-										neptunPlatform +
-										N64Acurate +
-										".gge";
+										"NeptunJS/cores/" + neptunPlatform + N64Acurate + ".gge";
 								}
 							}
 							var _script = document.createElement("script");
 							_script.setAttribute("data-name", llms + "data_njs2");
-							_script.src =
-								"https://impragma.github.io/NeptunJS/cores/dataload.gge";
+							_script.src = "NeptunJS/cores/dataload.gge";
 							document.body.appendChild(_script);
 							_script.onload = function () {
 								var _0x13E1B = setTimeout(function () {

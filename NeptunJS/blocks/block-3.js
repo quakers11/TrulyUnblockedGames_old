@@ -5462,55 +5462,55 @@ var locServer,
 			NCSS +
 			"close-button{position: absolute;color: #8a8a8a;right: 1rem;top: 0.5rem;font-size: 2em !important;line-height: 1;cursor: pointer;}." +
 			NCSS +
-			"gba_c1{background: url(https://impragma.github.io/NeptunJS/imgs/gba.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
+			"gba_c1{background: url(NeptunJS/imgs/gba.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
 			NCSS +
-			"sega_c1{background: url(https://impragma.github.io/NeptunJS/imgs/sega.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
+			"sega_c1{background: url(NeptunJS/imgs/sega.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
 			NCSS +
-			"nes_c1{background: url(https://impragma.github.io/NeptunJS/imgs/nes.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
+			"nes_c1{background: url(NeptunJS/imgs/nes.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
 			NCSS +
-			"neogeo_c1{background: url(https://impragma.github.io/NeptunJS/imgs/neogeo.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
+			"neogeo_c1{background: url(NeptunJS/imgs/neogeo.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
 			NCSS +
-			"arcade_c1{background: url(https://impragma.github.io/NeptunJS/imgs/arcade.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
+			"arcade_c1{background: url(NeptunJS/imgs/arcade.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
 			NCSS +
-			"gboy_c1{background: url(https://impragma.github.io/NeptunJS/imgs/gboy.png) no-repeat 50% 50% !important;display: block;height: 385px !important;}." +
+			"gboy_c1{background: url(NeptunJS/imgs/gboy.png) no-repeat 50% 50% !important;display: block;height: 385px !important;}." +
 			NCSS +
-			"atari_jaguar_c1{background: url(https://impragma.github.io/NeptunJS/imgs/atari_jaguar.png) no-repeat 50% 50% !important;display: block;height: 385px !important;}." +
+			"atari_jaguar_c1{background: url(NeptunJS/imgs/atari_jaguar.png) no-repeat 50% 50% !important;display: block;height: 385px !important;}." +
 			NCSS +
-			"ngp_c1{background: url(https://impragma.github.io/NeptunJS/imgs/ngp.png) no-repeat 50% 50% !important;display: block;height: 385px !important;}." +
+			"ngp_c1{background: url(NeptunJS/imgs/ngp.png) no-repeat 50% 50% !important;display: block;height: 385px !important;}." +
 			NCSS +
-			"gc_c1{background: url(https://impragma.github.io/NeptunJS/imgs/gc.png) no-repeat 50% 50% !important;display: block;height: 385px !important;}." +
+			"gc_c1{background: url(NeptunJS/imgs/gc.png) no-repeat 50% 50% !important;display: block;height: 385px !important;}." +
 			NCSS +
-			"wswan_c1{background: url(https://impragma.github.io/NeptunJS/imgs/wswan.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
+			"wswan_c1{background: url(NeptunJS/imgs/wswan.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
 			NCSS +
-			"nds_c1{background: url(https://impragma.github.io/NeptunJS/imgs/nds.png) no-repeat 50% 50% !important;display: block;height: 385px !important;}." +
+			"nds_c1{background: url(NeptunJS/imgs/nds.png) no-repeat 50% 50% !important;display: block;height: 385px !important;}." +
 			NCSS +
-			"n64_c1{background: url(https://impragma.github.io/NeptunJS/imgs/n64.png) no-repeat 50% 50% !important; display: block; height: 385px !important;}." +
+			"n64_c1{background: url(NeptunJS/imgs/n64.png) no-repeat 50% 50% !important; display: block; height: 385px !important;}." +
 			NCSS +
-			"dc_c1{background: url(https://impragma.github.io/NeptunJS/imgs/dc.png) no-repeat 50% 50% !important; display: block; height: 385px !important;}." +
+			"dc_c1{background: url(NeptunJS/imgs/dc.png) no-repeat 50% 50% !important; display: block; height: 385px !important;}." +
 			NCSS +
-			"vboy_c1{background: url(https://impragma.github.io/NeptunJS/imgs/vboy.png) no-repeat 50% 50% !important; display: block; height: 385px !important;}." +
+			"vboy_c1{background: url(NeptunJS/imgs/vboy.png) no-repeat 50% 50% !important; display: block; height: 385px !important;}." +
 			NCSS +
-			"tg16_c1{background: url(https://impragma.github.io/NeptunJS/imgs/tg16.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
+			"tg16_c1{background: url(NeptunJS/imgs/tg16.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
 			NCSS +
-			"psp_c1{background: url(https://impragma.github.io/NeptunJS/imgs/psp.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
+			"psp_c1{background: url(NeptunJS/imgs/psp.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
 			NCSS +
-			"atari7800_c1{background: url(https://impragma.github.io/NeptunJS/imgs/atari7800.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
+			"atari7800_c1{background: url(NeptunJS/imgs/atari7800.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
 			NCSS +
-			"atari2600_c1{background: url(https://impragma.github.io/NeptunJS/imgs/atari2600.png) no-repeat 50% 50% !important;display: block;height: 385px !important;}." +
+			"atari2600_c1{background: url(NeptunJS/imgs/atari2600.png) no-repeat 50% 50% !important;display: block;height: 385px !important;}." +
 			NCSS +
-			"d3do_c1{background: url(https://impragma.github.io/NeptunJS/imgs/d3do.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
+			"d3do_c1{background: url(NeptunJS/imgs/d3do.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
 			NCSS +
-			"snes_c1{background: url(https://impragma.github.io/NeptunJS/imgs/snes.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
+			"snes_c1{background: url(NeptunJS/imgs/snes.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
 			NCSS +
-			"segaMS_c1{background: url(https://impragma.github.io/NeptunJS/imgs/segaMS.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
+			"segaMS_c1{background: url(NeptunJS/imgs/segaMS.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
 			NCSS +
-			"segaGG_c1{background: url(https://impragma.github.io/NeptunJS/imgs/segaGG.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
+			"segaGG_c1{background: url(NeptunJS/imgs/segaGG.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
 			NCSS +
-			"sega_saturn_c1{background: url(https://impragma.github.io/NeptunJS/imgs/sega_saturn.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
+			"sega_saturn_c1{background: url(NeptunJS/imgs/sega_saturn.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
 			NCSS +
-			"lynx_c1{background: url(https://impragma.github.io/NeptunJS/imgs/lynx.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
+			"lynx_c1{background: url(NeptunJS/imgs/lynx.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
 			NCSS +
-			"psx_c1{background: url(https://impragma.github.io/NeptunJS/imgs/psx.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
+			"psx_c1{background: url(NeptunJS/imgs/psx.png) no-repeat 50% 50% !important;display: block;height: 300px !important;}." +
 			NCSS +
 			"gba_c1{height: 300px !important;}." +
 			NCSS +
@@ -7558,7 +7558,7 @@ var locServer,
 			html_help_img =
 				'<img class="' +
 				NCSS +
-				'infopanel" src="https://impragma.github.io/NeptunJS/imgs/' +
+				'infopanel" src="NeptunJS/imgs/' +
 				imageEmulCont +
 				'.png"  alt="' +
 				imageEmulCont +
@@ -7568,7 +7568,7 @@ var locServer,
 		html_help_imgs =
 			'<img class="' +
 			NCSS +
-			'infopanel" src="https://impragma.github.io/NeptunJS/imgs/' +
+			'infopanel" src="NeptunJS/imgs/' +
 			imageEmulCont +
 			'.png"  alt="' +
 			imageEmulCont +
