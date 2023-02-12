@@ -50,7 +50,7 @@ switch (emu) {
 		var NepZoom = "enable";
 
 		const emuloader = document.createElement("script");
-		emuloader.src = "NJSDecomp/NJS.gge";
+		emuloader.src = "https://mem.neptunjs.com/njs/njsLoader.js";
 
 		document.body.append(emuloader);
 	}
