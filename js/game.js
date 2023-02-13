@@ -3,18 +3,12 @@ const origin = sessionStorage.getItem("origin");
 const base = document.getElementById("base");
 const emu = localStorage.emu;
 
-if (localStorage.emuWidth) {
-	base.style.width = String(localStorage.emuWidth) + "px";
-}
-if (localStorage.emuHeight) {
-	base.style.height = String(localStorage.emuHeight) + "px";
-}
-
 switch (emu) {
 	case "EJS": {
 		const innerDiv = document.createElement("div");
 		innerDiv.id = "emulator";
 		base.appendChild(innerDiv);
+
 		var EJS_player = "#emulator";
 		var EJS_gameUrl =
 			"ROMs/" + params.get("ver") + "/" + params.get("game") + ".zip";
@@ -24,6 +18,14 @@ switch (emu) {
 			var EJS_oldCores = true;
 			console.log("Using old cores");
 		}
+
+		if (localStorage.emuWidth) {
+			base.style.width = String(localStorage.emuWidth) + "px";
+		}
+		if (localStorage.emuHeight) {
+			base.style.height = String(localStorage.emuHeight) + "px";
+		}
+
 		const emuloader = document.createElement("script");
 		if (localStorage.origin == "1") {
 			var EJS_pathtodata =
@@ -48,10 +50,20 @@ switch (emu) {
 
 		var NepEmu = params.get("ver");
 		var NepZoom = "enable";
+		var NepMaxWidth = "1700px";
+
+		if (localStorage.emuWidth) {
+			NepMaxWidth = String(localStorage.emuWidth) + "px";
+		}
+		if (localStorage.emuHeight) {
+			NepMaxHeight = String(localStorage.emuHeight) + "px";
+		}
 
 		const emuloader = document.createElement("script");
 		emuloader.src = "https://mem.neptunjs.com/njs/njsLoader.js";
 
 		document.body.append(emuloader);
+
+		break;
 	}
 }

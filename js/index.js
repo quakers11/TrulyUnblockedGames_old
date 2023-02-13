@@ -1,15 +1,16 @@
 // page loading stuff
 console.log("Advanced features:");
 console.log(
-	"Set local storage \"origin\" to 0 to run the emulator hosted on this domain, 1 to run it from GitHub, and 2 to run it from a launcher file."
+	'Set local storage "origin" to 0 to run the emulator hosted on this domain, and 1 to run it from GitHub.'
 );
 console.log(
-	"Set session storage \"emuWidth\" and \"emuHeight\" to set a custom size for EmulatorJS."
+	'Set session storage "emuWidth" and "emuHeight" to set a custom size for EmulatorJS.'
 );
 
-const toggle = getId("coretoggle");
-toggle.className +=
+getId("coretoggle").className +=
 	" " + (localStorage.oldCores == "1" ? "active" : "inactive");
+
+getId("emulatortoggle").textContent = "EmulatorJS";
 
 let linknames, linknamelist;
 let page = 0;
@@ -101,12 +102,12 @@ function updateTabs(tab) {
 		tabcontent[i].style.display = "none";
 	}
 	getId(tab).style.display = "block"; // shows the correct tab
-	let tablinks = getClass("tablinks");
-	for (let i = 0; i < tablinks.length; i++) {
+	let tabbuttons = getClass("tabbuttons");
+	for (let i = 0; i < tabbuttons.length; i++) {
 		// clears the active class from all tabs and adds the active class to the correct tab
-		tablinks[i].className = tablinks[i].className.replace(" active", "");
-		if (tablinks[i].className.includes(tab)) {
-			tablinks[i].className += " active";
+		tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+		if (tabbuttons[i].className.includes(tab)) {
+			tabbuttons[i].className += " active";
 		}
 	}
 	let cores = getId("coretoggle");
@@ -138,13 +139,16 @@ function togglesites(event) {
 }
 
 function toggleoldcores() {
-	btn = getId("coretoggle");
-	if (localStorage.oldCores == "0") {
+	let classes = getId("coretoggle").className.split(" ");
+
+	if (classes.includes("inactive")) {
+		classes = remove(classes, "inactive");
 		localStorage.oldCores = "1";
-		btn.className = "toggle active";
+		classes.push("active");
 	} else {
+		classes = remove(classes, "active");
 		localStorage.oldCores = "0";
-		btn.className = "toggle inactive";
+		classes.push("inactive");
 	}
 }
 
@@ -202,8 +206,6 @@ async function applyLinks(games) {
 
 	div.appendChild(a);
 	div.appendChild(p);
-
-	debugger;
 
 	for (const game of games) {
 		a.textContent = game[0] + " - " + linknames[game[2]];

@@ -4,42 +4,42 @@
 		<meta charset="utf-8" />
 		<title>Google</title>
 		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/default.css" />
 		<script src="data/links.js"></script>
 	</head>
 
 	<body>
-		<h1>Choose a console</h1>
+		<h1>Choose a category</h1>
 
 		<div class="tab">
-			<button class="tablinks NES" onclick="updateTabs('NES');">
+			<button class="tabbuttons NES" onclick="updateTabs('NES');">
 				Nintendo Entertainment System
 			</button>
-			<button class="tablinks GBA" onclick="updateTabs('GBA');">
+			<button class="tabbuttons GBA" onclick="updateTabs('GBA');">
 				Game Boy Advance
 			</button>
-			<button class="tablinks N64" onclick="updateTabs('N64');">
+			<button class="tabbuttons N64" onclick="updateTabs('N64');">
 				Nintendo 64
 			</button>
-			<button class="tablinks Web" onclick="updateTabs('Web');">Web</button>
+			<button class="tabbuttons Web" onclick="updateTabs('Web');">Web</button>
 		</div>
 
-		<br />
-		<br />
-		<br />
-		<br />
+		<div class="settings">
+			<button
+				id="coretoggle"
+				class="webhidden buttonslim toggle"
+				onclick="toggleoldcores();"
+			>
+				Toggle Old Cores
+			</button>
 
-		<button id="coretoggle" onclick="toggleoldcores();" class="toggle">
-			Toggle Old Cores
-		</button>
-
-		<!--Not really used as a toggle-->
-		<button
-			id="emulatortoggle"
-			class="toggle inactive"
-			onclick="toggleEmulator();"
-		>
-			EmulatorJS
-		</button>
+			<!--Not really used as a toggle-->
+			<button
+				id="emulatortoggle"
+				class="webhidden buttonslim toggle"
+				onclick="toggleEmulator();"
+			></button>
+		</div>
 
 		<div id="NES" class="tabcontent">
 			<h2>Nintendo Entertainment System</h2>
@@ -190,9 +190,7 @@
 
 		<p>
 			Continuous integration version
-			<a href="https://wade7wastaken.github.io/TrulyUnblockedGames/default.html"
-				>here</a
-			>.
+			<a href="https://wade7wastaken.github.io/TrulyUnblockedGames/">here</a>.
 		</p>
 
 		<script src="js/index.js"></script>
