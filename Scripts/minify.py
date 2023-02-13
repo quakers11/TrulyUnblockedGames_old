@@ -40,15 +40,16 @@ for subdir, dirs, files in os.walk("./"):
             with open(f, "rt", encoding="utf-8") as o:
                 content = minify_html.minify(
                     o.read(), do_not_minify_doctype=True, ensure_spec_compliant_unquoted_attribute_values=True, minify_css=True, minify_js=True)
-                
+
                 outpath = os.path.join("Output", f)
                 os.makedirs(os.path.dirname(outpath), exist_ok=True)
                 with open(outpath, "wt", encoding="utf-8") as output:
                     output.write(content)
         elif os.path.splitext(f)[1] == ".json":
             with open(f, "rt", encoding="utf-8") as o:
-                content = json.dumps(json.loads(o.read()), separators=(',', ':'))
-                
+                content = json.dumps(json.loads(o.read()),
+                                     separators=(',', ':'))
+
                 outpath = os.path.join("Output", f)
                 os.makedirs(os.path.dirname(outpath), exist_ok=True)
                 with open(outpath, "wt", encoding="utf-8") as output:
