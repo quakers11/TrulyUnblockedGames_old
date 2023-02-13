@@ -1,9 +1,8 @@
 const params = new URLSearchParams(window.location.search);
 const origin = sessionStorage.getItem("origin");
 const base = document.getElementById("base");
-const emu = localStorage.emu;
 
-switch (emu) {
+switch (localStorage.emu) {
 	case "EJS": {
 		const innerDiv = document.createElement("div");
 		innerDiv.id = "emulator";
@@ -50,7 +49,6 @@ switch (emu) {
 
 		var NepEmu = params.get("ver");
 		var NepZoom = "enable";
-		var NepMaxWidth = "1700px";
 
 		if (localStorage.emuWidth) {
 			NepMaxWidth = String(localStorage.emuWidth) + "px";

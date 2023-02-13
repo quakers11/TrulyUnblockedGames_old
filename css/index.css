@@ -23,11 +23,6 @@ button.active {
 	background-color: #0b518a;
 }
 
-.settings {
-	padding-top: 70px;
-	padding-bottom: 50px;
-}
-
 .tabcontent {
 	display: none;
 	padding: 6px 12px;

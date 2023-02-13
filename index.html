@@ -26,10 +26,15 @@
 			</button>
 		</div>
 
-		<div class="settings">
+		<div class="settings webhidden">
+			<br />
+			<br />
+			<br />
+			<br />
+
 			<button
 				id="coretoggle"
-				class="webhidden buttonslim toggle"
+				class="buttonslim"
 				onclick="toggleoldcores();">
 				Toggle Old Cores
 			</button>
@@ -37,17 +42,21 @@
 			<!--Not really used as a toggle-->
 			<button
 				id="emulatortoggle"
-				class="webhidden buttonslim toggle"
+				class="buttonslim"
 				onclick="toggleEmulator();"></button>
 		</div>
+
+		<br />
+		<br />
+		<br />
 
 		<div id="NES" class="tabcontent">
 			<h2>Nintendo Entertainment System</h2>
 			<h3>Super Mario Bros.</h3>
 			<ul>
 				<li>
-					<a href="game.html?ver=nes&game=smb"
-						>Super Mario Bros. (World)</a
+					<a href="game.html?ver=nes&game=smb">
+						Super Mario Bros. (World)</a
 					>
 				</li>
 				<li>
@@ -198,18 +207,27 @@
 		<div id="Web" class="tabcontent">
 			<label for="websearch">Search: </label>
 			<input type="text" id="websearch" oninput="onSearchInput();" />
+
 			<br />
 			<br />
+
 			<div id="siteselector"></div>
+
+			<br /><br />
+
 			<p class="pagedisplay"></p>
-			<button onclick="prevPage();">Previous</button>
-			<button onclick="nextPage();">Next</button>
+			<button class="buttonslim" onclick="prevPage();">Previous</button>
+			<button class="buttonslim" onclick="nextPage();">Next</button>
+
 			<br />
 			<br />
+			<br />
+
 			<div id="webgames"></div>
+
 			<p class="pagedisplay"></p>
-			<button onclick="prevPage();">Previous</button>
-			<button onclick="nextPage();">Next</button>
+			<button class="buttonslim" onclick="prevPage();">Previous</button>
+			<button class="buttonslim" onclick="nextPage();">Next</button>
 		</div>
 
 		<br />

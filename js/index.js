@@ -84,7 +84,7 @@ function getLocalStorage() {
 function addSiteSelectors() {
 	let main = document.getElementById("siteselector");
 	let btn = document.createElement("button");
-	btn.className = "toggle inactive";
+	btn.className = "buttonslim";
 	btn.setAttribute("onclick", "togglesites(event);");
 	linknamelist.forEach((element) => {
 		btn.textContent = linknames[element];
@@ -105,16 +105,19 @@ function updateTabs(tab) {
 	let tabbuttons = getClass("tabbuttons");
 	for (let i = 0; i < tabbuttons.length; i++) {
 		// clears the active class from all tabs and adds the active class to the correct tab
-		tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+		tabbuttons[i].className = tabbuttons[i].className.replace(
+			" active",
+			""
+		);
 		if (tabbuttons[i].className.includes(tab)) {
 			tabbuttons[i].className += " active";
 		}
 	}
-	let cores = getId("coretoggle");
-	if (tab == "Web") {
-		cores.style.display = "none";
-	} else {
-		cores.style.display = "inline";
+	let hidden = getClass("webhidden");
+	let disp = tab == "Web" ? "none" : "inline";
+
+	for (let el of hidden) {
+		el.style.display = disp;
 	}
 }
 
@@ -123,14 +126,12 @@ function togglesites(event) {
 
 	let classes = el.className.split(" ");
 
-	if (classes.includes("inactive")) {
-		classes = remove(classes, "inactive");
+	if (classes.includes("active")) {
+		classes = remove(classes, "active");
+		filteredsites = remove(filteredsites, el.attributes["data"].nodeValue);
+	} else {
 		classes.push("active");
 		filteredsites.push(el.attributes["data"].nodeValue);
-	} else {
-		classes = remove(classes, "active");
-		classes.push("inactive");
-		filteredsites = remove(filteredsites, el.attributes["data"].nodeValue);
 	}
 
 	el.className = classes.join(" ");
@@ -139,16 +140,29 @@ function togglesites(event) {
 }
 
 function toggleoldcores() {
-	let classes = getId("coretoggle").className.split(" ");
+	let toggle = getId("coretoggle");
+	let classes = toggle.className.split(" ");
 
-	if (classes.includes("inactive")) {
-		classes = remove(classes, "inactive");
-		localStorage.oldCores = "1";
-		classes.push("active");
-	} else {
+	if (classes.includes("active")) {
 		classes = remove(classes, "active");
 		localStorage.oldCores = "0";
-		classes.push("inactive");
+	} else {
+		localStorage.oldCores = "1";
+		classes.push("active");
+	}
+
+	toggle.className = classes.join(" ");
+}
+
+function toggleEmulator() {
+	let main = getId("emulatortoggle");
+
+	if (main.textContent == "EmulatorJS") {
+		localStorage.emu = "NJS";
+		main.textContent = "NeptunJS";
+	} else {
+		localStorage.emu = "EJS";
+		main.textContent = "EmulatorJS";
 	}
 }
 
@@ -157,7 +171,9 @@ function sortLinks() {
 
 	for (const game of games) {
 		if (
-			game[0].toLowerCase().includes(getId("websearch").value.toLowerCase()) &&
+			game[0]
+				.toLowerCase()
+				.includes(getId("websearch").value.toLowerCase()) &&
 			!filteredsites.includes(game[2])
 		) {
 			matches.push(game);
@@ -240,16 +256,4 @@ function onSearchInput() {
 	page = 0;
 	sortLinks();
 	renderLinks();
-}
-
-function toggleEmulator() {
-	let main = getId("emulatortoggle");
-
-	if (main.textContent == "EmulatorJS") {
-		localStorage.emu = "NJS";
-		main.textContent = "NeptunJS";
-	} else {
-		localStorage.emu = "EJS";
-		main.textContent = "EmulatorJS";
-	}
 }
