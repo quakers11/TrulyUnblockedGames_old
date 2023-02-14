@@ -121,11 +121,18 @@ function loadEmuGames() {
 
 		quickAppend("h2", container, data.name);
 
-		for (const game in data.games) {
-			const gamedata = data.games[game];
+		for (const title in data.games) {
+			const gamedata = data.games[title];
 
-			quickAppend("h3", container, game);
+			quickAppend("h3", container, title);
 			
+			for (const a in gamedata) {
+				category = gamedata[a];
+				
+				for (const game of category) {
+					console.log(game.name);
+				}
+			}
 
 		}
 	}
