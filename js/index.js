@@ -12,6 +12,8 @@ getId("coretoggle").className +=
 
 getId("emulatortoggle").textContent = "EmulatorJS";
 
+loadEmuGames();
+
 let linknames, linknamelist;
 let page = 0;
 let games = [];
@@ -91,6 +93,30 @@ function addSiteSelectors() {
 		btn.setAttribute("data", element);
 		main.appendChild(btn.cloneNode(true));
 	});
+}
+
+function loadEmuGames() {
+	const buttonParent = getId("buttonparent");
+
+	let buttons = Object.keys(emugames);
+
+	const el = document.createElement("button");
+
+	for (const button of buttons) {
+		let data = emugames[button];
+
+		el.textContent = data.name;
+		el.className = "tabbuttons " + button;
+		el.setAttribute("onclick", `updateTabs("${button}")`);
+
+		buttonParent.append(el.cloneNode(true));
+	}
+
+	let web = document.createElement("button");
+	web.textContent = "Web";
+	web.className = "tabbuttons Web";
+	web.setAttribute("onclick", 'updateTabs("Web")');
+	buttonParent.append(web);
 }
 
 function updateTabs(tab) {

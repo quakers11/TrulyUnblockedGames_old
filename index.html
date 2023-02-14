@@ -6,25 +6,13 @@
 		<link rel="stylesheet" href="css/index.css" />
 		<link rel="stylesheet" href="css/default.css" />
 		<script src="data/links.js"></script>
+		<script src="data/emugames.js"></script>
 	</head>
 
 	<body>
 		<h1>Choose a category</h1>
 
-		<div class="tab">
-			<button class="tabbuttons NES" onclick="updateTabs('NES');">
-				Nintendo Entertainment System
-			</button>
-			<button class="tabbuttons GBA" onclick="updateTabs('GBA');">
-				Game Boy Advance
-			</button>
-			<button class="tabbuttons N64" onclick="updateTabs('N64');">
-				Nintendo 64
-			</button>
-			<button class="tabbuttons Web" onclick="updateTabs('Web');">
-				Web
-			</button>
-		</div>
+		<div id="buttonparent" class="tab"></div>
 
 		<div class="settings webhidden">
 			<br />
