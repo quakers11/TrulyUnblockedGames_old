@@ -78,6 +78,12 @@ function remove(arr, value) {
 	return arr;
 }
 
+function quickAppend(type, container, text) {
+	const el = document.createElement(type);
+	el.textContent = text;
+	container.append(el);
+}
+
 // major functions
 function getLocalStorage() {
 	if (!localStorage.openTab) localStorage.openTab = "NES";
@@ -98,18 +104,30 @@ function addSiteSelectors() {
 function loadEmuGames() {
 	const buttonParent = getId("buttonparent");
 
-	let buttons = Object.keys(emugames);
-
 	const el = document.createElement("button");
 
-	for (const button of buttons) {
-		let data = emugames[button];
+	for (const system in emugames) {
+		// Generate buttons
+		let data = emugames[system];
 
 		el.textContent = data.name;
-		el.className = "tabbuttons " + button;
-		el.setAttribute("onclick", `updateTabs("${button}")`);
+		el.className = "tabbuttons " + system;
+		el.setAttribute("onclick", `updateTabs("${system}")`);
 
 		buttonParent.append(el.cloneNode(true));
+
+		//Generate content
+		const container = getId(system);
+
+		quickAppend("h2", container, data.name);
+
+		for (const game in data.games) {
+			const gamedata = data.games[game];
+
+			quickAppend("h3", container, game);
+			
+
+		}
 	}
 
 	let web = document.createElement("button");
