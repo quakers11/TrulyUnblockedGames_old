@@ -49,11 +49,14 @@ button.active {
 .bottomnav {
 	font-size: 20px;
 	position: fixed;
-	bottom: 7px;
+	bottom: 0px;
+	left: 0px;
 	overflow: auto;
 	white-space: nowrap;
 	width: 100%;
-	margin-left: 5px;
+	padding: 7px 0px 7px 10px;
+	background-color: rgb(50, 50, 50);
+	text-align: center;
 }
 
 .bottomnav a {
