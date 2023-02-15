@@ -63,3 +63,7 @@ button.active {
 	margin-right: 25px;
 	text-decoration: none;
 }
+
+.bottomnav a:last-child {
+	margin-right: 0px;
+}
