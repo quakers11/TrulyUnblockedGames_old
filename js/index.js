@@ -219,9 +219,11 @@ function toggleEmulator() {
 	if (main.textContent == "EmulatorJS") {
 		localStorage.emu = "NJS";
 		main.textContent = "NeptunJS";
+		getId("coretoggle").style.display = "none";
 	} else {
 		localStorage.emu = "EJS";
 		main.textContent = "EmulatorJS";
+		getId("coretoggle").style.display = "inline-block";
 	}
 }
 
