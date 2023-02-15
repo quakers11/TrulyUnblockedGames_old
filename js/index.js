@@ -1,14 +1,11 @@
 // page loading stuff
 console.log("Advanced features:");
 console.log(
-	'Set local storage "origin" to 0 to run the emulator hosted on this domain, and 1 to run it from GitHub.'
+	'Set local storage "origin" to 0 to run the emulator hosted on this domain, and 1 to run it from GitHub.',
 );
-console.log(
-	'Set session storage "emuWidth" and "emuHeight" to set a custom size for EmulatorJS.'
-);
+console.log('Set session storage "emuWidth" and "emuHeight" to set a custom size for EmulatorJS.');
 
-getId("coretoggle").className +=
-	" " + (localStorage.oldCores == "1" ? "active" : "inactive");
+getId("coretoggle").className += " " + (localStorage.oldCores == "1" ? "active" : "inactive");
 
 getId("emulatortoggle").textContent = "EmulatorJS";
 
@@ -125,15 +122,14 @@ function loadEmuGames() {
 			const gamedata = data.games[title];
 
 			quickAppend("h3", container, title);
-			
+
 			for (const a in gamedata) {
 				category = gamedata[a];
-				
+
 				for (const game of category) {
 					console.log(game.name);
 				}
 			}
-
 		}
 	}
 
@@ -156,10 +152,7 @@ function updateTabs(tab) {
 	let tabbuttons = getClass("tabbuttons");
 	for (let i = 0; i < tabbuttons.length; i++) {
 		// clears the active class from all tabs and adds the active class to the correct tab
-		tabbuttons[i].className = tabbuttons[i].className.replace(
-			" active",
-			""
-		);
+		tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
 		if (tabbuttons[i].className.includes(tab)) {
 			tabbuttons[i].className += " active";
 		}
@@ -222,9 +215,7 @@ function sortLinks() {
 
 	for (const game of games) {
 		if (
-			game[0]
-				.toLowerCase()
-				.includes(getId("websearch").value.toLowerCase()) &&
+			game[0].toLowerCase().includes(getId("websearch").value.toLowerCase()) &&
 			!filteredsites.includes(game[2])
 		) {
 			matches.push(game);
@@ -242,9 +233,7 @@ async function renderLinks() {
 		a.textContent = game[0] + " - " + linknames[game[2]];
 		a.href = game[1];
 		a.style.color =
-			"hsl(" +
-			(360 / linknamelist.length) * linknamelist.indexOf(game[2]) +
-			", 100%, 90%)";
+			"hsl(" + (360 / linknamelist.length) * linknamelist.indexOf(game[2]) + ", 100%, 90%)";
 
 		p.textContent = "(" + game[3] + ")";
 
@@ -254,9 +243,7 @@ async function renderLinks() {
 	const disp = getClass("pagedisplay");
 
 	Array.from(disp).forEach((element) => {
-		element.textContent = `Page ${page + 1} of ${
-			Math.floor(matches.length / linksperpage) + 1
-		}`;
+		element.textContent = `Page ${page + 1} of ${Math.floor(matches.length / linksperpage) + 1}`;
 	});
 }
 
@@ -278,9 +265,7 @@ async function applyLinks(games) {
 		a.textContent = game[0] + " - " + linknames[game[2]];
 		a.href = game[1];
 		a.style.color =
-			"hsl(" +
-			(360 / linknamelist.length) * linknamelist.indexOf(game[2]) +
-			", 100%, 90%)";
+			"hsl(" + (360 / linknamelist.length) * linknamelist.indexOf(game[2]) + ", 100%, 90%)";
 
 		p.textContent = "(" + game[3] + ")";
 
