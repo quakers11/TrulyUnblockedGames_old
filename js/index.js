@@ -1,44 +1,41 @@
 // page loading stuff
 console.log("Advanced features:");
 console.log(
-	'Set local storage "origin" to 0 to run the emulator hosted on this domain, and 1 to run it from GitHub.',
+	'Set local storage "origin" to "0" to run the emulator hosted on this domain, and "1" to run it from GitHub.',
 );
 console.log('Set session storage "emuWidth" and "emuHeight" to set a custom size for EmulatorJS.');
 
+// set coretoggle to what is currently in localStorage (defaults to inactive)
 getId("coretoggle").className += " " + (localStorage.oldCores == "1" ? "active" : "inactive");
 
-getId("emulatortoggle").textContent = "EmulatorJS";
+// set emulatortoggle to what is currently in localStorage (defaults to EmulatorJS)
+switch (localStorage.emu) {
+	case "EJS":
+		getId("emulatortoggle").textContent = "EmulatorJS";
+		break;
+	case "NJS":
+		getId("emulatortoggle").textContent = "NeptunJS";
+		getId("coretoggle").style.display = "none";
+		break;
+	default:
+		getId("emulatortoggle").textContent = "EmulatorJS";
+		break;
+}
 
 loadEmuGames();
 
-let linknames, linknamelist;
-let page = 0;
-let games = [];
+// Global variables
+const linknames = links.names; // a mapping from internal site names to display names
+const linknamelist = Object.keys(links.names).sort(); // an array of the internal site names
+let page = 0; // the current page of links
+let games = []; // the main array of games
 let matches = [];
 let filteredsites = [];
-
-const linksperpage = 200;
-
-const div = document.createElement("div");
-div.className = "webcontent";
-const a = document.createElement("a");
-a.className = "weblinks";
-a.setAttribute("target", "_blank");
-const p = document.createElement("p");
-p.className = "domainname";
-
-div.appendChild(a);
-div.appendChild(p);
-
-linknamelist = Object.keys(links.names).sort();
-linknames = links.names;
+const linksperpage = 100; // 100 seems to be the max without causeing slowdowns on older computers
 
 delete links.names; // delete this so we can iterate through the object without this being there
 
 addSiteSelectors();
-
-sessionStorage.origin = 0;
-sessionStorage.oldCores = 0;
 
 getLocalStorage();
 
@@ -240,9 +237,20 @@ function sortLinks() {
 	}
 }
 
-async function renderLinks() {
+function renderLinks() {
 	main = getId("webgames");
 	main.innerHTML = "";
+
+	const div = document.createElement("div");
+	div.className = "webcontent";
+	const a = document.createElement("a");
+	a.className = "weblinks";
+	a.setAttribute("target", "_blank");
+	const p = document.createElement("p");
+	p.className = "domainname";
+
+	div.appendChild(a);
+	div.appendChild(p);
 
 	const startvalue = page * linksperpage;
 
@@ -262,32 +270,6 @@ async function renderLinks() {
 	Array.from(disp).forEach((element) => {
 		element.textContent = `Page ${page + 1} of ${Math.floor(matches.length / linksperpage) + 1}`;
 	});
-}
-
-async function applyLinks(games) {
-	main = getId("webgames");
-
-	const div = document.createElement("div");
-	div.className = "webcontent";
-	const a = document.createElement("a");
-	a.className = "weblinks";
-	a.setAttribute("target", "_blank");
-	const p = document.createElement("p");
-	p.className = "domainname";
-
-	div.appendChild(a);
-	div.appendChild(p);
-
-	for (const game of games) {
-		a.textContent = game[0] + " - " + linknames[game[2]];
-		a.href = game[1];
-		a.style.color =
-			"hsl(" + (360 / linknamelist.length) * linknamelist.indexOf(game[2]) + ", 100%, 90%)";
-
-		p.textContent = "(" + game[3] + ")";
-
-		main.appendChild(div.cloneNode(true));
-	}
 }
 
 function nextPage() {
