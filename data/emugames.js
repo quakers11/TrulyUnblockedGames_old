@@ -137,4 +137,9 @@ const emugames = {
 			},
 		},
 	},
+	DS: {
+		name: "Nintendo DS",
+		consolename: "ds",
+		games: {},
+	},
 };
