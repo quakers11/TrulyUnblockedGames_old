@@ -10,5 +10,6 @@
 	"proseWrap": "never",
     "bracketSameLine": true,
     "jsxSingleQuote": false,
-    "htmlWhitespaceSensitivity": "strict"
+    "htmlWhitespaceSensitivity": "strict",
+    "endOfLine": "crlf"
 }
