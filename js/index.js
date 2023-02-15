@@ -101,17 +101,22 @@ function addSiteSelectors() {
 function loadEmuGames() {
 	const buttonParent = getId("buttonparent");
 
-	const el = document.createElement("button");
+	const button = document.createElement("button");
+
+	let li = document.createElement("li");
+	let link = document.createElement("a");
+
+	li.append(link);
 
 	for (const system in emugames) {
 		// Generate buttons
 		let data = emugames[system];
 
-		el.textContent = data.name;
-		el.className = "tabbuttons " + system;
-		el.setAttribute("onclick", `updateTabs("${system}")`);
+		button.textContent = data.name;
+		button.className = "tabbuttons " + system;
+		button.setAttribute("onclick", `updateTabs("${system}")`);
 
-		buttonParent.append(el.cloneNode(true));
+		buttonParent.append(button.cloneNode(true));
 
 		//Generate content
 		const container = getId(system);
@@ -126,9 +131,19 @@ function loadEmuGames() {
 			for (const a in gamedata) {
 				category = gamedata[a];
 
-				for (const game of category) {
-					console.log(game.name);
+				if (a != "main") {
+					quickAppend("h4", container, a);
 				}
+
+				let ul = document.createElement("ul");
+
+				for (const game of category) {
+					link.textContent = game.name;
+					link.href = `game.html?ver=${data.consolename}&game=${game.rom}`;
+					ul.append(li.cloneNode(true));
+				}
+
+				container.append(ul);
 			}
 		}
 	}
